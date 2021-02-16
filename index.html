@@ -16,18 +16,34 @@
     jsFiddle will insert css and js -->
   </head>
   <body>
-    <h1 class="display-3 mb-0">
-      <span data-ng-bind="selected.palette.name" class="ng-binding">Custom</span>
-  </h1>
-    <nav id="nav-bar" class="nav-bar">
-      <button class="btn-primary">Home</button>
-      <button>Login</button>
-      <button>Puzzles</button>
-      <button>Profile</button>
-      <button>Leaderboard</button>
-      <button type="button" class="btn btn-success mr-1">ABCDEFGHIJKLM</button>
-      <button>ABCDEFGHIJKLM</button>
-    </nav>
+    <div class="container-fluid toggles d-flex flex-column ng-scope" data-ng-show="!ui.busy">
+            <div class="row align-items-center bg-success check-contrast">
+                <div class="col-xl-9 col-lg-11 container-alt toggles-ignore mx-auto text-dark">
+                    <div class="row py-2">
+                        <div class="col-xl-7 col-lg-8 py-2 text-center text-lg-left">
+                            <h1 class="display-3 mb-0 text-center">
+                                <span data-ng-bind="selected.palette.name" class="ng-binding">GEO HUNT</span>
+                            </h1>
+                            <p class="lead mb-3 text-center"><span data-ng-bind="selected.palette.desc" class="ng-binding">A virtual, global search game</p>
+                            <nav class="text-center">
+                              <button class="btn btn-lg toggles-ignore mr-2 btn-outline-dark" >Home</button> 
+                              <button class="btn btn-lg toggles-ignore mr-2 btn-outline-dark" >Login</button> 
+                              <button class="btn btn-lg toggles-ignore mr-2 btn-outline-dark" >Leaderboard</button> 
+                              <button class="btn btn-lg toggles-ignore mr-2 btn-outline-dark" >Puzzles</button> 
+                              <button class="btn btn-lg toggles-ignore mr-2 btn-outline-dark" >Profile</button> 
+                              <button class="btn btn-lg toggles-ignore mr-2 btn-outline-dark" >Profile</button>
+                            </nav> 
+                        </div>
+                        <!-- <div class="col-lg py-2 text-center text-lg-left">
+                            <div class="float-lg-right float-none">
+                            <script async="" type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7DC2QJ&amp;placement=themestrapp" id="_carbonads_js"></script>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     <div id="map"></div>
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
