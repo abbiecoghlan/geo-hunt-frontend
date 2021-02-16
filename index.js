@@ -1,74 +1,90 @@
-function initMap() {
-  const myLatlng = { lat: -25.363, lng: 131.044 };
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
-    center: myLatlng,
-  });
-  // Create the initial InfoWindow.
-  let infoWindow = new google.maps.InfoWindow({
-    content: "Click the map to get Lat/Lng!",
-    position: myLatlng,
-  });
-  infoWindow.open(map);
-  // Configure the click listener.
-  map.addListener("click", (mapsMouseEvent) => {
-    // Close the current InfoWindow.
-    infoWindow.close();
-    // Create a new InfoWindow.
-    infoWindow = new google.maps.InfoWindow({
-      position: mapsMouseEvent.latLng,
-    });
-    infoWindow.setContent(
-      JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-    );
-    infoWindow.open(map);
-    const lat = mapsMouseEvent.latLng.toJSON().lat
-    const lang = mapsMouseEvent.latLng.toJSON().lng
+let puzzleInterfaceShowing = false
+let interfaceShowing = false
 
-    if (verify(-33.85291132953081, 151.20974884396315, lat, lang, .005)){
-      console.log("YOU WIN")
-    } else {
-      console.log("try again")
-    }
-    // debugger
-  });
+const baseUrl = 'http://localhost:3000'
+const puzzlesUrl = 'http://localhost:3000/puzzles'
+
+const puzzleInterfaceDiv = document.getElementById('puzzle-interface')
+const interfaceDiv = document.getElementById('interface')
+
+
+const main = () => {
+  addNavListeners()
 }
 
-const verify = (latitude, longitude, guessLat, guessLong, length=.01) => {
-  const minLat = latitude - length
-  const maxLat = latitude + length
-  
-  const minLongitude = longitude - length
-  const maxLong = longitude + length
+const fetchData = (url) => {
+  return fetch(url)
+  .then(resp => resp.json())
+}
 
-  if (guessLat >= minLat && guessLat <= maxLat && guessLong >= minLongitude && guessLong <= maxLong){
-    return true
+const addNavListeners = () => {
+  const nav = document.getElementById('nav-bar')
+
+  nav.addEventListener('click', event => {
+    event.preventDefault()
+
+    if (event.target.id === 'puzzle-btn'){
+      console.log('puzzlebutton')
+      interfaceDiv.innerHTML = ""
+      toggleInterface()
+      displayPuzzles()
+    }
+
+  })
+}
+
+const togglePuzzleInterface = () => {
+
+  if (!puzzleInterfaceShowing){
+    puzzleInterfaceDiv.style.display = ""
+    puzzleInterfaceShowing = true
+  } else {
+    puzzleInterfaceDiv.style.display = "none"
+    puzzleInterfaceShowing = false
   }
 }
 
+const toggleInterface = () => {
+  if (!interfaceShowing){
+    interfaceDiv.style.display = ""
+    interfaceShowing = true
+  } else {
+    interfaceDiv.style.display = "none"
+    interfaceShowing = false
+  }
+}
+
+const displayPuzzles = () => {
+  // fetch puzzles
+  // create a ul named puzzle list
+  // create li nodes with the puzzle names and append them
+  //event LISTENERS
+  
+  const ul = document.createElement('ul')
+  interfaceDiv.append(ul)
+
+  fetchData(puzzlesUrl)
+  .then(puzzles => puzzles.forEach(puzzle => renderPuzzleLi(puzzle, ul))
+  )
 
 
+}
 
+  // puzzles.forEach(puzzle => renderPuzzleLi(puzzle, ul)
 
-// function initMap() {
-//   const myLatlng = { lat: -25.363, lng: 131.044 };
-//   const map = new google.maps.Map(document.getElementById("map"), {
-//     zoom: 4,
-//     center: myLatlng,
-//   });
-//   const marker = new google.maps.Marker({
-//     position: myLatlng,
-//     map,
-//     title: "Click to zoom",
-//   });
-//   // map.addListener("center_changed", () => {
-//   //   // 3 seconds after the center of the map has changed, pan back to the
-//   //   // marker.
-//   //   window.setTimeout(() => {
-//   //     map.panTo(marker.getPosition());
-//   //   }, 3000);
-//   // });
-//   marker.addListener("click", () => {
-//     console.log('button pressed!')
-//   });
-// }
+const renderPuzzleLi = (puzzle, ul) => {
+
+  const li = document.createElement('li')
+
+  li.innerText = `${puzzle.title} - ${puzzle.difficulty}`
+  li.dataset.id = puzzle
+
+  // completion percentage
+  // highest rated
+  // most played
+  // add difficulty categorizer/sections
+  // debugger
+  ul.append(li)
+}
+
+main()

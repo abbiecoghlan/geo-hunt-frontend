@@ -24,8 +24,14 @@
   }
 
   /* grid / column css look */
-  .interface {
+  .puzzle-interface {
     display: grid;
     grid-template-columns: 5fr 5fr;
     background-color: cornsilk;
+  }
+
+  .splash {
+    background-color: cornsilk;
+
+    /* height: 505px; */
   }
