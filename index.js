@@ -10,6 +10,7 @@ const interfaceDiv = document.getElementById('interface')
 
 const main = () => {
   addNavListeners()
+  addInterfaceListeners()
 }
 
 const fetchData = (url) => {
@@ -33,6 +34,18 @@ const addNavListeners = () => {
   })
 }
 
+const addInterfaceListeners = () => {
+
+  interfaceDiv.addEventListener('click', event => {
+    event.preventDefault()
+
+    if (event.target.id === 'puzzle-select'){
+      loadPuzzle(event.target)
+    }
+  }
+
+)}
+
 const togglePuzzleInterface = () => {
 
   if (!puzzleInterfaceShowing){
@@ -55,10 +68,6 @@ const toggleInterface = () => {
 }
 
 const displayPuzzles = () => {
-  // fetch puzzles
-  // create a ul named puzzle list
-  // create li nodes with the puzzle names and append them
-  //event LISTENERS
   
   const ul = document.createElement('ul')
   const puzzleHeader = document.createElement('h2')
@@ -72,14 +81,13 @@ const displayPuzzles = () => {
 
 }
 
-  // puzzles.forEach(puzzle => renderPuzzleLi(puzzle, ul)
-
 const renderPuzzleLi = (puzzle, ul) => {
 
   const li = document.createElement('li')
-
+// make li look like a link
   li.innerText = `${puzzle.title} - ${puzzle.difficulty}`
-  li.dataset.id = puzzle
+  li.id = 'puzzle-select'
+  li.dataset.id = puzzle.id
 
   // completion percentage
   // highest rated
@@ -87,6 +95,18 @@ const renderPuzzleLi = (puzzle, ul) => {
   // add difficulty categorizer/sections
   // debugger
   ul.append(li)
+}
+
+const loadPuzzle = (eventTarget) => {
+
+  // create a reqObect with id as cargo
+  // fetch specfic puzzle utilizing the id stored in the event target
+  // set our global targetLat and targetLong
+  // receive, render initial clue to screen toggling puzzle interface and timer
+
+  fetchData(puzzlesUrl + `/${eventTarget.dataset.id}`)
+  .then(puzzle => console.log(puzzle))
+
 }
 
 main()

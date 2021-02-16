@@ -47,17 +47,21 @@ function initMap() {
   }
   
   const verify = (latitude, longitude, guessLat, guessLong, limit=.01) => {
-    const r = Math.sqrt((guessLat-latitude)**2+(guessLong-longitude)**2)
-    // const minLat = latitude - length
-    // const maxLat = latitude + length
-    
-    // const minLongitude = longitude - length
-    // const maxLong = longitude + length
 
-    return r < limit 
-  
-  
-    // if (guessLat >= minLat && guessLat <= maxLat && guessLong >= minLongitude && guessLong <= maxLong){
-    //   return true
-    // }
+    const r = Math.sqrt((guessLat-latitude)**2+(guessLong-longitude)**2)
+    
+    return r <= limit
+
   }
+
+  // const minLat = latitude - length
+  // const maxLat = latitude + length
+  
+  // const minLongitude = longitude - length
+  // const maxLong = longitude + length
+
+
+
+  // if (guessLat >= minLat && guessLat <= maxLat && guessLong >= minLongitude && guessLong <= maxLong){
+  //   return true
+  // }
