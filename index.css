@@ -15,36 +15,16 @@
 
 /* Set the size of the div element that contains the map */
 #map {
-    height: 600px;
+  /* change to scale with screen */
+    height: 505px;
     /* The height is 400 pixels */
-    width: 50%;
+    width: 100%;
     /* The width is the width of the web page */
-    /* border-radius: 27px; */
   }
 
-  /* #nav-bar {
-    height: 15vh;
-    background: rgb(49, 109, 179);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-bottom: 3vh;
-  } */
-
-  /* #nav-bar button {
-    padding: 1%;
-    height: 80%;
-    width: 8vw;
-    display: flex;
-    justify-content: center;
-    font-size: 3vh;
-    align-items: center;
-    border-radius: 2em;
-    border: 1px solid rgb(245, 181, 181);
-  } */
-
   /* grid / column css look */
-  /* body {
+  .interface {
     display: grid;
-    grid-template-columns: 2fr 8fr
-  } */
+    grid-template-columns: 5fr 5fr;
+    background-color: cornsilk;
+  }
