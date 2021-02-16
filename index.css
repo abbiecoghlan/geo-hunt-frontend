@@ -22,6 +22,26 @@
     border-radius: 27px;
   }
 
+  /* #nav-bar {
+    height: 15vh;
+    background: rgb(49, 109, 179);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 3vh;
+  } */
+
+  /* #nav-bar button {
+    padding: 1%;
+    height: 80%;
+    width: 8vw;
+    display: flex;
+    justify-content: center;
+    font-size: 3vh;
+    align-items: center;
+    border-radius: 2em;
+    border: 1px solid rgb(245, 181, 181);
+  } */
 
   /* grid / column css look */
   /* body {
