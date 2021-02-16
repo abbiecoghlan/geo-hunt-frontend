@@ -15,9 +15,16 @@
 
 /* Set the size of the div element that contains the map */
 #map {
-    height: 400px;
+    height: 600px;
     /* The height is 400 pixels */
     width: 50%;
     /* The width is the width of the web page */
     border-radius: 27px;
   }
+
+
+  /* grid / column css look */
+  /* body {
+    display: grid;
+    grid-template-columns: 2fr 8fr
+  } */

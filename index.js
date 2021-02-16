@@ -34,7 +34,7 @@ function initMap() {
   });
 }
 
-const verify = (latitude, longitude, guessLat, guessLong, length) => {
+const verify = (latitude, longitude, guessLat, guessLong, length=.01) => {
   const minLat = latitude - length
   const maxLat = latitude + length
   
