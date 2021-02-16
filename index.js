@@ -61,7 +61,9 @@ const displayPuzzles = () => {
   //event LISTENERS
   
   const ul = document.createElement('ul')
-  interfaceDiv.append(ul)
+  const puzzleHeader = document.createElement('h2')
+  puzzleHeader.innerText = 'Browse Puzzles'
+  interfaceDiv.append(puzzleHeader, ul)
 
   fetchData(puzzlesUrl)
   .then(puzzles => puzzles.forEach(puzzle => renderPuzzleLi(puzzle, ul))

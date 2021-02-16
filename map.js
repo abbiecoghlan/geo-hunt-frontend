@@ -1,6 +1,9 @@
 let currentLat
 let currentLong
 
+let targetLat
+let targetLong
+
 function initMap() {
     const myLatlng = { lat: 0, lng: 0 };
     const map = new google.maps.Map(document.getElementById("map"), {
@@ -34,21 +37,27 @@ function initMap() {
   
       if (verify(-33.85291132953081, 151.20974884396315, lat, long, .005)){
         console.log("YOU WIN")
+        // fetch attempt back to api with updated status (successful)
       } else {
         console.log("try again")
+        // fetch attempt back to api with updated status (failed)
       }
 
     });
   }
   
-  const verify = (latitude, longitude, guessLat, guessLong, length=.01) => {
-    const minLat = latitude - length
-    const maxLat = latitude + length
+  const verify = (latitude, longitude, guessLat, guessLong, limit=.01) => {
+    const r = Math.sqrt((guessLat-latitude)**2+(guessLong-longitude)**2)
+    // const minLat = latitude - length
+    // const maxLat = latitude + length
     
-    const minLongitude = longitude - length
-    const maxLong = longitude + length
+    // const minLongitude = longitude - length
+    // const maxLong = longitude + length
+
+    return r < limit 
   
-    if (guessLat >= minLat && guessLat <= maxLat && guessLong >= minLongitude && guessLong <= maxLong){
-      return true
-    }
+  
+    // if (guessLat >= minLat && guessLat <= maxLat && guessLong >= minLongitude && guessLong <= maxLong){
+    //   return true
+    // }
   }
