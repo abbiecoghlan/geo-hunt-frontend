@@ -25,7 +25,7 @@ function initMap() {
     const lat = mapsMouseEvent.latLng.toJSON().lat
     const lang = mapsMouseEvent.latLng.toJSON().lng
 
-    if (verify(-33.85291132953081, 151.20974884396315, lat, lang)){
+    if (verify(-33.85291132953081, 151.20974884396315, lat, lang, .005)){
       console.log("YOU WIN")
     } else {
       console.log("try again")
@@ -34,13 +34,13 @@ function initMap() {
   });
 }
 
-const verify = (latitude, longitude, guessLat, guessLong) => {
-  const minLat = latitude - .01
-  const minLongitude = longitude - .01
+const verify = (latitude, longitude, guessLat, guessLong, length) => {
+  const minLat = latitude - length
+  const maxLat = latitude + length
+  
+  const minLongitude = longitude - length
+  const maxLong = longitude + length
 
-  const maxLat = latitude + .01
-  const maxLong = longitude + .01
-  // debugger
   if (guessLat >= minLat && guessLat <= maxLat && guessLong >= minLongitude && guessLong <= maxLong){
     return true
   }
