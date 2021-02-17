@@ -252,6 +252,9 @@ const puzzleCompletion = () => {
 }
 
 const renderSuccess = (attempt) => {
+  const div = document.createElement('div')
+  div.className = 'text-center'
+
   const vMessage = document.createElement('h1')
   vMessage.innerText = 'You Found it!'
 
@@ -261,7 +264,8 @@ const renderSuccess = (attempt) => {
   const timeP = document.createElement('p')
   timeP.innerText = `Time Taken: ${attempt.time_taken}`
 
-  interfaceDiv.append(vMessage, locationP, timeP)
+  div.append(vMessage, locationP, timeP)
+  interfaceDiv.append(div)
 
 }
 
