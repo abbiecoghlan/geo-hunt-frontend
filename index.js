@@ -1,5 +1,5 @@
 let puzzleInterfaceShowing = false
-let interfaceShowing = false
+// let interfaceShowing = false
 
 const baseUrl = 'http://localhost:3000'
 const puzzlesUrl = 'http://localhost:3000/puzzles'
@@ -18,6 +18,7 @@ const fetchData = (url) => {
   return fetch(url)
   .then(resp => resp.json())
 }
+
 const fetchDataWithReqObj = (url, reqObj) => {
   return fetch(url, reqObj)
   .then(resp => resp.json())
@@ -32,10 +33,9 @@ const addNavListeners = () => {
     if (event.target.id === 'puzzle-btn'){
       console.log('puzzlebutton')
       interfaceDiv.innerHTML = ""
-      toggleInterface()
+      // toggleInterface()
       displayPuzzles()
     }
-
   })
 }
 
@@ -48,29 +48,42 @@ const addInterfaceListeners = () => {
       loadPuzzle(event.target)
     }
   }
-
 )}
 
-const togglePuzzleInterface = () => {
+// const togglePuzzleInterface = () => {
+//   if (!puzzleInterfaceShowing){
+//     puzzleInterfaceDiv.style.display = ""
+//     puzzleInterfaceShowing = true
+//   } else {
+//     puzzleInterfaceDiv.style.display = "none"
+//     puzzleInterfaceShowing = false
+//   }
+// }
 
-  if (!puzzleInterfaceShowing){
+// const toggleInterface = () => {
+//   if (!interfaceShowing){
+//     interfaceDiv.style.display = ""
+//     interfaceShowing = true
+//   } else {
+//     interfaceDiv.style.display = "none"
+//     interfaceShowing = false
+//   }
+// }
+
+const togglePuzzleInterface = () => {
+  if (!puzzleInterfaceShowing) {
+    interfaceDiv.style.display = "none"
     puzzleInterfaceDiv.style.display = ""
     puzzleInterfaceShowing = true
+    // interfaceShowing = false
   } else {
     puzzleInterfaceDiv.style.display = "none"
+    interfaceDiv.style.display = ""
     puzzleInterfaceShowing = false
+    // interfaceShowing = true
   }
 }
 
-const toggleInterface = () => {
-  if (!interfaceShowing){
-    interfaceDiv.style.display = ""
-    interfaceShowing = true
-  } else {
-    interfaceDiv.style.display = "none"
-    interfaceShowing = false
-  }
-}
 
 const displayPuzzles = () => {
   
@@ -82,8 +95,6 @@ const displayPuzzles = () => {
   fetchData(puzzlesUrl)
   .then(puzzles => puzzles.forEach(puzzle => renderPuzzleLi(puzzle, ul))
   )
-
-
 }
 
 const renderPuzzleLi = (puzzle, ul) => {
