@@ -16,29 +16,30 @@
 /* Set the size of the div element that contains the map */
 #map {
   /* change to scale with screen */
-    height: 505px;
+  height: 505px;
     /* The height is 400 pixels */
-    width: 100%;
+  width: 100%;
     /* The width is the width of the web page */
-    background-color: darkgrey;
-  }
+  background-color: darkgrey;
+}
 
   /* grid / column css look */
-  .puzzle-interface {
-    display: grid;
-    grid-template-columns: 5fr 5fr;
-    background-color: cornsilk;
-  }
+.puzzle-interface {
+  display: grid;
+  grid-template-columns: 5fr 5fr;
+  background-color: cornsilk;
+}
 
-  .interface {
-    background-color: cornsilk;
-    height: 505px;
+.interface {
+  background-color: cornsilk;
+  height: 505px;
     
     /* height: 505px; */
-  }
+}
   
-  html, body {
-    height: 100%;
-    background-color: cornsilk;
-    
-  }
+html, body {
+  height: 100%;
+  background-color: cornsilk;
+}
+
+  
