@@ -122,6 +122,15 @@ const loadPuzzle = (eventTarget) => {
     )
   }
 
+  // 'load puzzle'
+  // render puzzle interface
+    // title, 1st clue, clue buttons, timer, submit button, display current coordinates
+    // if submitted correctly
+      // stop timer
+      // de render puzzle interface and toggle interface div
+      // update attempt and show a victory page (picture of location?)
+        // suggestions - check out the leaderboards or your profile to view stats, or hit the puzzle tab to keep the puzzle train rolling
+
   fetchDataWithReqObj(attemptsUrl, reqObj)
   .then(attempt => {
     console.log(attempt)
@@ -129,7 +138,7 @@ const loadPuzzle = (eventTarget) => {
     renderClues(attempt.puzzle.clues)
     console.log(targetLat)
     console.log(targetLong)
-    debugger
+    // debugger
   })  
 }
 
