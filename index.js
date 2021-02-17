@@ -12,6 +12,7 @@ const interfaceDiv = document.getElementById('interface')
 const main = () => {
   addNavListeners()
   addInterfaceListeners()
+  addPuzzleInterfaceListeners()
 }
 
 const fetchData = (url) => {
@@ -49,6 +50,17 @@ const addInterfaceListeners = () => {
     }
   }
 )}
+
+const addPuzzleInterfaceListeners = () => {
+
+  puzzleInterfaceDiv.addEventListener('click', event => { 
+    event.preventDefault()
+
+    if (event.target.id === 'clue-btn'){
+      revealClue()
+    }
+  })
+}
 
 // const togglePuzzleInterface = () => {
 //   if (!puzzleInterfaceShowing){
@@ -105,7 +117,7 @@ const renderPuzzleLi = (puzzle, ul) => {
   // highest rated
   // most played
   // add difficulty categorizer/sections
-  // debugger
+
   ul.append(li)
 }
 
@@ -141,10 +153,11 @@ const loadPuzzle = (eventTarget) => {
   fetchDataWithReqObj(attemptsUrl, reqObj)
   .then(attempt => {
     console.log(attempt)
+
     setTargets(attempt.puzzle.latitude, attempt.puzzle.longitude)
     renderPuzzleName(attempt.puzzle.title)
     renderClues(attempt.clues)
-    renderButton()
+    // renderButton()
     console.log(targetLat)
     console.log(targetLong)
   })  
@@ -161,6 +174,7 @@ const renderPuzzleName = (title) => {
 }
 
 const renderClues = (clueArray) => {
+  
   const cluesUl = document.getElementById("clues")
   clueArray.forEach(clue => {
     const clueLi = document.createElement("li")
@@ -171,15 +185,25 @@ const renderClues = (clueArray) => {
     cluesUl.append(clueLi)
   })
   const firstClueLi = document.getElementsByClassName("hint")[0]
+  console.log(firstClueLi)
   firstClueLi.style.display = "block"
   console.log(firstClueLi)
 }
 
-const renderButton = () => {
-  const button = document.getElementById("clue-btn")
-  console.log(button)
-  button.innerHTML 
-}
+// const renderButton = () => {
+//   const button = document.getElementById("clue-btn")
+//   button.innerHTML = `Show Next Hint`
+// }
 
+const revealClue = () => {
+  console.log("hello world")
+  const cluesLiArray = document.getElementsByClassName("hint")
+
+  for (i = 0; i < cluesLiArray.length; i++){
+    if (cluesLiArray[i].style.display === "none"){
+      return cluesLiArray[i].style.display = 'block'
+    }
+  }
+}
 
 main()

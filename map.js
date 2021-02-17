@@ -32,10 +32,10 @@ function initMap() {
       currentLat = mapsMouseEvent.latLng.toJSON().lat
       currentLong = mapsMouseEvent.latLng.toJSON().lng
       
-      const lat = mapsMouseEvent.latLng.toJSON().lat
-      const long = mapsMouseEvent.latLng.toJSON().lng
+      // const lat = mapsMouseEvent.latLng.toJSON().lat
+      // const long = mapsMouseEvent.latLng.toJSON().lng
   
-      if (verify(-33.85291132953081, 151.20974884396315, lat, long, .005)){
+      if (verify(targetLat, targetLong, currentLat, currentLong, .005)){
         console.log("YOU WIN")
         // fetch attempt back to api with updated status (successful)
       } else {
