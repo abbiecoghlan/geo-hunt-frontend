@@ -115,17 +115,21 @@ const loadPuzzle = (eventTarget) => {
       Accept: "application/json"
     },
     body: JSON.stringify(
-     { puzzleId: eventTarget.dataset.id }
+     {
+      puzzleId: eventTarget.dataset.id,
+      userId: 1
+      }
     )
   }
 
   fetchDataWithReqObj(attemptsUrl, reqObj)
   .then(attempt => {
     console.log(attempt)
-    // setTargets(attempt.puzzle.latitude, attempt.puzzle.longitude)
-    // renderClues(attempt.puzzle.clues)
-    // console.log(targetLat)
-    // console.log(targetLong) 
+    setTargets(attempt.puzzle.latitude, attempt.puzzle.longitude)
+    renderClues(attempt.puzzle.clues)
+    console.log(targetLat)
+    console.log(targetLong)
+    debugger
   })  
 }
 
