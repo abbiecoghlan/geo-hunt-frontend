@@ -238,13 +238,18 @@ const puzzleCompletion = () => {
   .then(attempt => {
     togglePuzzleInterface
     interfaceDiv.innerHTML = ""
-    renderSuccess(attempt)
+    console.log (attempt)
+    // renderSuccess(attempt)
   })
   
 }
 
 const renderSuccess = (attempt) => {
-  const h1 = document.createElement
+  const vMessage = document.createElement('h1')
+  vMessage.innerText = 'You Found it!'
+
+  // const locationP = attempt.puzzle.location
+
 }
 
 main()
