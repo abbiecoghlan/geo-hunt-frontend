@@ -42,6 +42,22 @@ const addNavListeners = () => {
       }
       displayPuzzles()
     }
+
+    if (event.target.id === 'home-btn'){
+      console.log('you pushed the home button')
+    }
+
+    if (event.target.id === 'login-btn'){
+      console.log('you pushed the login button')
+    }
+
+    if (event.target.id === 'leaderboard-btn'){
+      console.log('you pushed the leaderboard button')
+    }
+
+    if (event.target.id === 'profile-btn'){
+      console.log('you pushed the profile button')
+    }
   })
 }
 
