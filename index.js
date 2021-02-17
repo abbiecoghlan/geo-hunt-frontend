@@ -105,8 +105,11 @@ const loadPuzzle = (eventTarget) => {
   // receive, render initial clue to screen toggling puzzle interface and timer
 
   fetchData(puzzlesUrl + `/${eventTarget.dataset.id}`)
-  .then(puzzle => console.log(puzzle))
-
+  .then(puzzle => {console.log(puzzle)
+  debugger
+  })
+  
+  
 }
 
 main()
