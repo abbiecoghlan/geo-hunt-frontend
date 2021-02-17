@@ -176,7 +176,9 @@ const renderClues = (clueArray) => {
 }
 
 const renderButton = () => {
-  const button = 
+  const button = document.getElementById("clue-btn")
+  console.log(button)
+  button.innerHTML 
 }
 
 
