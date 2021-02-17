@@ -75,18 +75,14 @@ const togglePuzzleInterface = () => {
     interfaceDiv.style.display = "none"
     puzzleInterfaceDiv.style.display = ""
     puzzleInterfaceShowing = true
-    // interfaceShowing = false
   } else {
     puzzleInterfaceDiv.style.display = "none"
     interfaceDiv.style.display = ""
     puzzleInterfaceShowing = false
-    // interfaceShowing = true
   }
 }
 
-
 const displayPuzzles = () => {
-  
   const ul = document.createElement('ul')
   const puzzleHeader = document.createElement('h2')
   puzzleHeader.innerText = 'Browse Puzzles'
@@ -114,7 +110,7 @@ const renderPuzzleLi = (puzzle, ul) => {
 }
 
 const loadPuzzle = (eventTarget) => {
-
+  togglePuzzleInterface()
   // fetch specfic puzzle utilizing the id stored in the event target ~
   // set our global targetLat and targetLong
   // receive, render initial clue to screen toggling puzzle interface and timer
@@ -146,10 +142,11 @@ const loadPuzzle = (eventTarget) => {
   .then(attempt => {
     console.log(attempt)
     setTargets(attempt.puzzle.latitude, attempt.puzzle.longitude)
-    renderClues(attempt.puzzle.clues)
+    renderPuzzleName(attempt.puzzle.title)
+    renderClues(attempt.clues)
+    renderButton()
     console.log(targetLat)
     console.log(targetLong)
-    // debugger
   })  
 }
 
@@ -158,8 +155,28 @@ const setTargets = (puzzleLat, puzzleLong) => {
   targetLong = puzzleLong
 }
 
+const renderPuzzleName = (title) => {
+  const puzzleName = document.getElementById("puzzle-name")
+  puzzleName.innerHTML = title
+}
+
 const renderClues = (clueArray) => {
-  
+  const cluesUl = document.getElementById("clues")
+  clueArray.forEach(clue => {
+    const clueLi = document.createElement("li")
+    clueLi.className = "hint"
+    clueLi.innerText = clue.hint
+    clueLi.id = clue.id
+    clueLi.style.display = "none"
+    cluesUl.append(clueLi)
+  })
+  const firstClueLi = document.getElementsByClassName("hint")[0]
+  firstClueLi.style.display = "block"
+  console.log(firstClueLi)
+}
+
+const renderButton = () => {
+  const button = 
 }
 
 
