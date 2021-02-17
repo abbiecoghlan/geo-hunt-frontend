@@ -235,8 +235,16 @@ const puzzleCompletion = () => {
   }
 
   fetchDataWithReqObj(attemptsUrl + `/${attemptId}`, reqObj)
-  .then(attempt => console.log(attempt))
+  .then(attempt => {
+    togglePuzzleInterface
+    interfaceDiv.innerHTML = ""
+    renderSuccess(attempt)
+  })
   
+}
+
+const renderSuccess = (attempt) => {
+  const h1 = document.createElement
 }
 
 main()
