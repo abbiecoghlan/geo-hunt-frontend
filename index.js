@@ -3,6 +3,7 @@ let interfaceShowing = false
 
 const baseUrl = 'http://localhost:3000'
 const puzzlesUrl = 'http://localhost:3000/puzzles'
+const attemptsUrl = 'http://localhost:3000/attempts'
 
 const puzzleInterfaceDiv = document.getElementById('puzzle-interface')
 const interfaceDiv = document.getElementById('interface')
@@ -15,6 +16,10 @@ const main = () => {
 
 const fetchData = (url) => {
   return fetch(url)
+  .then(resp => resp.json())
+}
+const fetchDataWithReqObj = (url, reqObj) => {
+  return fetch(url, reqObj)
   .then(resp => resp.json())
 }
 
@@ -99,17 +104,39 @@ const renderPuzzleLi = (puzzle, ul) => {
 
 const loadPuzzle = (eventTarget) => {
 
-  // create a reqObect with id as cargo
-  // fetch specfic puzzle utilizing the id stored in the event target
+  // fetch specfic puzzle utilizing the id stored in the event target ~
   // set our global targetLat and targetLong
   // receive, render initial clue to screen toggling puzzle interface and timer
 
-  fetchData(puzzlesUrl + `/${eventTarget.dataset.id}`)
-  .then(puzzle => {console.log(puzzle)
-  debugger
-  })
-  
+  const reqObj = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: "application/json"
+    },
+    body: JSON.stringify(
+     { puzzleId: eventTarget.dataset.id }
+    )
+  }
+
+  fetchDataWithReqObj(attemptsUrl, reqObj)
+  .then(attempt => {
+    console.log(attempt)
+    // setTargets(attempt.puzzle.latitude, attempt.puzzle.longitude)
+    // renderClues(attempt.puzzle.clues)
+    // console.log(targetLat)
+    // console.log(targetLong) 
+  })  
+}
+
+const setTargets = (puzzleLat, puzzleLong) => {
+  targetLat = puzzleLat
+  targetLong = puzzleLong
+}
+
+const renderClues = (clueArray) => {
   
 }
+
 
 main()
