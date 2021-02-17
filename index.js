@@ -8,6 +8,7 @@ const attemptsUrl = 'http://localhost:3000/attempts'
 const puzzleInterfaceDiv = document.getElementById('puzzle-interface')
 const interfaceDiv = document.getElementById('interface')
 const submitBtn = document.getElementById('submit-btn')
+const cluesUl =  document.getElementById("clues")
 
 
 const main = () => {
@@ -35,7 +36,10 @@ const addNavListeners = () => {
     if (event.target.id === 'puzzle-btn'){
       console.log('puzzlebutton')
       interfaceDiv.innerHTML = ""
-      // toggleInterface()
+      if (puzzleInterfaceShowing){
+        stopTimer()
+        togglePuzzleInterface()
+      }
       displayPuzzles()
     }
   })
@@ -127,6 +131,7 @@ const renderPuzzleLi = (puzzle, ul) => {
 }
 
 const loadPuzzle = (eventTarget) => {
+  cluesUl.innerHTML = ""
   togglePuzzleInterface()
   // fetch specfic puzzle utilizing the id stored in the event target ~
   // set our global targetLat and targetLong
@@ -162,6 +167,7 @@ const loadPuzzle = (eventTarget) => {
     setTargets(attempt.puzzle.latitude, attempt.puzzle.longitude)
     renderPuzzleName(attempt.puzzle.title)
     renderClues(attempt.clues)
+    resetTimer()
     startTimer()
     
     const submitBtn = document.getElementById('submit-btn')
@@ -237,10 +243,10 @@ const puzzleCompletion = () => {
 
   fetchDataWithReqObj(attemptsUrl + `/${attemptId}`, reqObj)
   .then(attempt => {
-    togglePuzzleInterface
+    togglePuzzleInterface()
     interfaceDiv.innerHTML = ""
     console.log (attempt)
-    // renderSuccess(attempt)
+    renderSuccess(attempt)
   })
   
 }
@@ -250,12 +256,12 @@ const renderSuccess = (attempt) => {
   vMessage.innerText = 'You Found it!'
 
   const locationP = document.createElement('p')
-  locationP.innerText = `Location: ${attempt.puzzle.location}`
+  locationP.innerText = `Location: ${attempt.puzzle.location_name}`
 
   const timeP = document.createElement('p')
-  timeP.innerText = `Time Taken: ${attempt.timeTaken}`
+  timeP.innerText = `Time Taken: ${attempt.time_taken}`
 
-
+  interfaceDiv.append(vMessage, locationP, timeP)
 
 }
 
