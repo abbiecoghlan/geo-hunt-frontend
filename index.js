@@ -162,6 +162,7 @@ const loadPuzzle = (eventTarget) => {
     setTargets(attempt.puzzle.latitude, attempt.puzzle.longitude)
     renderPuzzleName(attempt.puzzle.title)
     renderClues(attempt.clues)
+    startTimer()
     
     const submitBtn = document.getElementById('submit-btn')
     submitBtn.dataset.attemptId = attempt.id
@@ -217,7 +218,7 @@ const revealClue = () => {
 const puzzleCompletion = () => {
   // send updated attempt
   // render victory screen
-
+  stopTimer()
   const attemptId = parseInt(submitBtn.dataset.attemptId, 10)
 
   const attemptObj = {
@@ -248,7 +249,13 @@ const renderSuccess = (attempt) => {
   const vMessage = document.createElement('h1')
   vMessage.innerText = 'You Found it!'
 
-  // const locationP = attempt.puzzle.location
+  const locationP = document.createElement('p')
+  locationP.innerText = `Location: ${attempt.puzzle.location}`
+
+  const timeP = document.createElement('p')
+  timeP.innerText = `Time Taken: ${attempt.timeTaken}`
+
+
 
 }
 
