@@ -31,26 +31,21 @@ function initMap() {
 
       currentLat = mapsMouseEvent.latLng.toJSON().lat
       currentLong = mapsMouseEvent.latLng.toJSON().lng
-      
-      // const lat = mapsMouseEvent.latLng.toJSON().lat
-      // const long = mapsMouseEvent.latLng.toJSON().lng
-  
-      if (verify(targetLat, targetLong, currentLat, currentLong, .005)){
-        console.log("YOU WIN")
-        // fetch attempt back to api with updated status (successful)
-      } else {
-        console.log("try again")
-        // fetch attempt back to api with updated status (failed)
-      }
 
     });
   }
   
-  const verify = (latitude, longitude, guessLat, guessLong, limit=.01) => {
+  const verify = (latitude, longitude, guessLat, guessLong, limit=30) => {
 
     const r = Math.sqrt((guessLat-latitude)**2+(guessLong-longitude)**2)
     
-    return r <= limit
+    if (r <= limit){
+      console.log("YOU WIN")
+      puzzleCompletion()
+      // fetch attempt back to api with updated status (successful)
+      } else {
+        console.log("try again")
+      }
 
   }
 

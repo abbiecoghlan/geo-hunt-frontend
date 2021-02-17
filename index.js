@@ -7,6 +7,7 @@ const attemptsUrl = 'http://localhost:3000/attempts'
 
 const puzzleInterfaceDiv = document.getElementById('puzzle-interface')
 const interfaceDiv = document.getElementById('interface')
+const submitBtn = document.getElementById('submit-btn')
 
 
 const main = () => {
@@ -58,6 +59,10 @@ const addPuzzleInterfaceListeners = () => {
 
     if (event.target.id === 'clue-btn'){
       revealClue()
+    }
+
+    if (event.target.id === 'submit-btn'){
+      verify(targetLat, targetLong, currentLat, currentLong, )
     }
   })
 }
@@ -157,7 +162,10 @@ const loadPuzzle = (eventTarget) => {
     setTargets(attempt.puzzle.latitude, attempt.puzzle.longitude)
     renderPuzzleName(attempt.puzzle.title)
     renderClues(attempt.clues)
-    // renderButton()
+    
+    const submitBtn = document.getElementById('submit-btn')
+    submitBtn.dataset.attemptId = attempt.id
+
     console.log(targetLat)
     console.log(targetLong)
   })  
@@ -204,6 +212,31 @@ const revealClue = () => {
       return cluesLiArray[i].style.display = 'block'
     }
   }
+}
+
+const puzzleCompletion = () => {
+  // send updated attempt
+  // render victory screen
+
+  const attemptId = parseInt(submitBtn.dataset.attemptId, 10)
+
+  const attemptObj = {
+    status: 'completed',
+    timeTaken: 10.5
+  }
+
+  const reqObj = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: "application/json"
+    },
+    body: JSON.stringify(attemptObj)
+  }
+
+  fetchDataWithReqObj(attemptsUrl + `/${attemptId}`, reqObj)
+  .then(attempt => console.log(attempt))
+  
 }
 
 main()
