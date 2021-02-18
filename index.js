@@ -124,8 +124,11 @@ const displayPuzzles = () => {
   puzzleDiv.addEventListener('click', event => {
     event.preventDefault()
 
-    if (event.target.id === 'puzzle-select'){
+    if (event.target.id === 'puzzle-select' && userId){
       loadPuzzle(event.target)
+    } else {
+      interfaceDiv.innerHTML = ""
+      displayLoginForm()
     }
   })
 
