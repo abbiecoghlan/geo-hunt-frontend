@@ -95,16 +95,7 @@ function initMap() {
       currentLong = mapsMouseEvent.latLng.toJSON().lng
 
     });
-
-    
-    
-
   }
-
-
-
-
-
   
   const verify = (latitude, longitude, guessLat, guessLong, radiusLimit) => {
     debugger
@@ -124,7 +115,6 @@ function initMap() {
           p.style.display = "none"
         }, 4000)
       }
-
   }
 
   // const minLat = latitude - length

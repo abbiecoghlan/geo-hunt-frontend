@@ -100,7 +100,7 @@ const addPuzzleInterfaceListeners = () => {
     }
 
     if (event.target.id === 'submit-btn'){
-      verify(targetLat, targetLong, currentLat, currentLong, )
+      verify(targetLat, targetLong, currentLat, currentLong, radiusLimit)
     }
 
   })
@@ -196,7 +196,6 @@ const loadPuzzle = (eventTarget) => {
     console.log(attempt)
   
     setTargets(attempt.puzzle.latitude, attempt.puzzle.longitude, attempt.puzzle.radius_limit)
-    debugger
     renderPuzzleName(attempt.puzzle.title)
     renderClues(attempt.clues)
     resetTimer()
@@ -214,7 +213,6 @@ const setTargets = (puzzleLat, puzzleLong, rLimit) => {
   targetLat = puzzleLat
   targetLong = puzzleLong
   radiusLimit = rLimit
-  debugger
 }
 
 const renderPuzzleName = (title) => {
