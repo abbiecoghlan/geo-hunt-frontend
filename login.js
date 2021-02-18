@@ -98,7 +98,18 @@ const addLoginListeners = () => {
         }
 
         fetchDataWithReqObj(loginUrl, reqObj)
-        .then(user => console.table(user))
+        .then(user => {
+            if (!userId){
+                userId = user.id
+                username = user.username
+                const loginButton = document.querySelector('#login-btn')
+                loginButton.innerText = 'Logout'
+                loginButton.id = 'logout-btn'
+                displayProfile()
+
+            }
+            console.table(user)
+        })
     })
 }
 

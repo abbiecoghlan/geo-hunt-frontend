@@ -1,5 +1,6 @@
 let puzzleInterfaceShowing = false
-// let interfaceShowing = false
+let userId
+let username
 
 const baseUrl = 'http://localhost:3000'
 const puzzlesUrl = 'http://localhost:3000/puzzles'
