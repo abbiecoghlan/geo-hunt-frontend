@@ -51,7 +51,7 @@ const displayLoginForm = () => {
 
     const submitButton = document.createElement('button')
     submitButton.id = "submit-btn"
-    submitButton.innerText = "Submit"
+    submitButton.innerHTML = "Submit"
     submitButton.className = "text-center"
     submitButton.type = "submit"
 
@@ -72,19 +72,22 @@ const displayLoginForm = () => {
     addLoginListeners()
 }
 
-
+////////////////////////////////////////////////
+// FIX SUBMIT LISTENER WHEN POSSIBLE
+///////////////////////////////////////////////
 const addLoginListeners = () => {
     const loginForm = document.querySelector('#login-form')
-    debugger
+    // const loginButton = document.querySelector('#submit-btn')
+
     loginForm.addEventListener('submit', event => {
         event.preventDefault()
         console.log('submit button pressed')
-
+        
         const credentials = {
             username: document.querySelector('#login-form').children[2].value,
             password: document.querySelector('#login-form').children[5].value
         }
-
+        // debugger
         const reqObj = {
             method: "POST",
             headers: {
@@ -95,7 +98,7 @@ const addLoginListeners = () => {
         }
 
         fetchDataWithReqObj(loginUrl, reqObj)
-        .then(user => console.log(user))
+        .then(user => console.table(user))
     })
 }
 

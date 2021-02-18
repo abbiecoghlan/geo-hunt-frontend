@@ -14,7 +14,7 @@ const cluesUl =  document.getElementById("clues")
 
 const main = () => {
   addNavListeners()
-  addInterfaceListeners()
+  // addInterfaceListeners()
   addPuzzleInterfaceListeners()
 }
 
