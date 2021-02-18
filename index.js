@@ -194,8 +194,9 @@ const loadPuzzle = (eventTarget) => {
   fetchDataWithReqObj(attemptsUrl, reqObj)
   .then(attempt => {
     console.log(attempt)
-
-    setTargets(attempt.puzzle.latitude, attempt.puzzle.longitude)
+  
+    setTargets(attempt.puzzle.latitude, attempt.puzzle.longitude, attempt.puzzle.radius_limit)
+    debugger
     renderPuzzleName(attempt.puzzle.title)
     renderClues(attempt.clues)
     resetTimer()
@@ -209,9 +210,11 @@ const loadPuzzle = (eventTarget) => {
   })  
 }
 
-const setTargets = (puzzleLat, puzzleLong) => {
+const setTargets = (puzzleLat, puzzleLong, rLimit) => {
   targetLat = puzzleLat
   targetLong = puzzleLong
+  radiusLimit = rLimit
+  debugger
 }
 
 const renderPuzzleName = (title) => {

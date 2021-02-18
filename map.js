@@ -4,6 +4,8 @@ let currentLong
 let targetLat
 let targetLong
 
+let radiusLimit
+
 // resset map zoom upon victory or giving up
 
 function initMap() {
@@ -104,16 +106,23 @@ function initMap() {
 
 
   
-  const verify = (latitude, longitude, guessLat, guessLong, limit=30) => {
-
+  const verify = (latitude, longitude, guessLat, guessLong, radiusLimit) => {
+    debugger
     const r = Math.sqrt((guessLat-latitude)**2+(guessLong-longitude)**2)
     
-    if (r <= limit){
+    if (r <= radiusLimit){
       console.log("YOU WIN")
       puzzleCompletion()
       // fetch attempt back to api with updated status (successful)
       } else {
         console.log("try again")
+        const p = document.getElementById('incorrect')
+
+        p.style.display = "block"
+
+        setTimeout(() => {
+          p.style.display = "none"
+        }, 4000)
       }
 
   }
