@@ -2,27 +2,38 @@ const displayProfile = () => {
     fetchData(userUrl + `/${userId}`)
     .then(user => {
 
+      let puzzleArray = []
+
+      user.attempts.forEach(attempt => {
+          const puzzle = attempt.puzzle
+          debugger
+          if (!puzzleArray.includes(puzzle)){
+              return puzzleArray.push(puzzle)
+          }
+      })
+
+      
         console.log(user)
         const username = document.createElement('h1')
-        username.innerText = `Welcome, ${profile.user.username}`
+        username.innerText = `Welcome, ${user.username}`
 
         const table = document.createElement('table')
         table.innerHTML = 
         `
         <thead>
           <tr>
-            <th>PUZZLE</th>
+            <th>Attempt</th>
 
-            <th>Attempts</th>      
-            <th>STATUS</th>
-            <th>STATUS</th>
+            <th>Puzzle</th>      
+            <th>Status</th>
+            <th>Time Taken</th>
           </tr>
         </thead>
 
         <tbody>
           <tr>
-            <td>${profile.puzzles[0].title}</td>
-            <td>${profile.puzzles[0].status}</td>
+            <td>${user.attempts[0].puzzle.title}</td>
+            <td>${user.attempts[0].puzzle.title}</td>
             <td></td>
             <td></td>
           </tr>
@@ -30,7 +41,7 @@ const displayProfile = () => {
         </tbody>
         `
 
-        interfaceDiv.append(username)
+        interfaceDiv.append(username, table)
 
 
 
