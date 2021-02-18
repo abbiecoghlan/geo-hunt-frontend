@@ -71,10 +71,6 @@ const displayLoginForm = () => {
 
     addLoginListeners()
 }
-
-////////////////////////////////////////////////
-// FIX SUBMIT LISTENER WHEN POSSIBLE
-///////////////////////////////////////////////
 const addLoginListeners = () => {
     const loginForm = document.querySelector('#login-form')
     // const loginButton = document.querySelector('#submit-btn')
@@ -106,6 +102,9 @@ const addLoginListeners = () => {
                 loginButton.innerText = 'Logout'
                 loginButton.id = 'logout-btn'
                 interfaceDiv.innerHTML = ""
+                const profileButton = document.getElementById('profile-btn')
+                profileButton.style.display = ""
+                profileButton.innerText = user.username
                 displayProfile()
 
             }
@@ -120,8 +119,21 @@ const displayCreateUserForm = (e) => {
     console.log("you want to display a new user form")
 }
 
-const loginUser = (e) => {
-    console.log("you want to login a user")
-}
+// const loginUser = (e) => {
+//     console.log("you want to login a user")
+// }
 
-// logout function
+const logout = () => {
+    userId = false
+    username = false
+    const profileButton = document.getElementById('profile-btn')
+    profileButton.style.display = "none"
+    profileButton.innerText = "Profile"
+    interfaceDiv.innerHTML = ""
+
+    const loginButton = document.querySelector('#logout-btn')
+    loginButton.innerText = 'Login'
+    loginButton.id = 'login-btn'
+    
+    displayHome()
+}
