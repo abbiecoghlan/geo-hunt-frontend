@@ -100,7 +100,7 @@ const displayUserProfile = (e) => {
       
         console.log(user)
         const username = document.createElement('h1')
-        username.innerText = `Welcome, ${user.username}`
+        username.innerText = `${user.username}`
 
         const tableTitle = document.createElement('p')
         tableTitle.innerText = 'Attempts Record'
