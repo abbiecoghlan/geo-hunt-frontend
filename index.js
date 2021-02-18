@@ -87,9 +87,6 @@ const puzzleVibeCheck = () => {
   }
 }
 
-
-
-
 const addPuzzleInterfaceListeners = () => {
 
   puzzleInterfaceDiv.addEventListener('click', event => { 

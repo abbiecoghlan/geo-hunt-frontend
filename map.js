@@ -98,7 +98,7 @@ function initMap() {
   }
   
   const verify = (latitude, longitude, guessLat, guessLong, radiusLimit) => {
-    debugger
+
     const r = Math.sqrt((guessLat-latitude)**2+(guessLong-longitude)**2)
     
     if (r <= radiusLimit){
