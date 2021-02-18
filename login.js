@@ -119,9 +119,9 @@ const displayCreateUserForm = (e) => {
     console.log("you want to display a new user form")
 }
 
-const loginUser = (e) => {
-    console.log("you want to login a user")
-}
+// const loginUser = (e) => {
+//     console.log("you want to login a user")
+// }
 
 const logout = () => {
     userId = false
@@ -130,5 +130,10 @@ const logout = () => {
     profileButton.style.display = "none"
     profileButton.innerText = "Profile"
     interfaceDiv.innerHTML = ""
+
+    const loginButton = document.querySelector('#logout-btn')
+    loginButton.innerText = 'Login'
+    loginButton.id = 'login-btn'
+    
     displayHome()
 }
