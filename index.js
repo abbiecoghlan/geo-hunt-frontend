@@ -4,6 +4,7 @@ let puzzleInterfaceShowing = false
 const baseUrl = 'http://localhost:3000'
 const puzzlesUrl = 'http://localhost:3000/puzzles'
 const attemptsUrl = 'http://localhost:3000/attempts'
+const loginUrl = 'http://localhost:3000/login'
 
 const puzzleInterfaceDiv = document.getElementById('puzzle-interface')
 const interfaceDiv = document.getElementById('interface')
