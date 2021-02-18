@@ -18,7 +18,6 @@ const cluesUl =  document.getElementById("clues")
 
 const main = () => {
   addNavListeners()
-  addInterfaceListeners()
   addPuzzleInterfaceListeners()
 }
 
@@ -118,14 +117,6 @@ const togglePuzzleInterface = () => {
     puzzleInterfaceShowing = false
   }
 }
-
-
-
-const addInterfaceListeners = () => {
-
-}
-
-
 
 
 const displayPuzzles = () => {
@@ -266,7 +257,7 @@ const puzzleCompletion = () => {
   // render victory screen
   stopTimer()
   const attemptId = parseInt(submitBtn.dataset.attemptId, 10)
-debugger
+  
   const attemptObj = {
     status: 'Completed',
     timeTaken: 10.5
