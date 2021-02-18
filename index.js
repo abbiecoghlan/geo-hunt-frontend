@@ -1,12 +1,13 @@
 let puzzleInterfaceShowing = false
-let userId
-let username
+let userId = 1
+let username = "thatsabbie"
 
 const baseUrl = 'http://localhost:3000'
 const puzzlesUrl = 'http://localhost:3000/puzzles'
 const attemptsUrl = 'http://localhost:3000/attempts'
 const loginUrl = 'http://localhost:3000/login'
 const userUrl = 'http://localhost:3000/users'
+const profileUrl = 'http://localhost:3000/profile'
 
 
 const puzzleInterfaceDiv = document.getElementById('puzzle-interface')
@@ -17,7 +18,7 @@ const cluesUl =  document.getElementById("clues")
 
 const main = () => {
   addNavListeners()
-  // addInterfaceListeners()
+  addInterfaceListeners()
   addPuzzleInterfaceListeners()
 }
 
@@ -114,29 +115,6 @@ const addPuzzleInterfaceListeners = () => {
 
   })
 }
-
-
-
-
-// const togglePuzzleInterface = () => {
-//   if (!puzzleInterfaceShowing){
-//     puzzleInterfaceDiv.style.display = ""
-//     puzzleInterfaceShowing = true
-//   } else {
-//     puzzleInterfaceDiv.style.display = "none"
-//     puzzleInterfaceShowing = false
-//   }
-// }
-
-// const toggleInterface = () => {
-//   if (!interfaceShowing){
-//     interfaceDiv.style.display = ""
-//     interfaceShowing = true
-//   } else {
-//     interfaceDiv.style.display = "none"
-//     interfaceShowing = false
-//   }
-// }
 
 const togglePuzzleInterface = () => {
   if (!puzzleInterfaceShowing) {

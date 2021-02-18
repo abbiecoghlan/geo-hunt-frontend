@@ -4,6 +4,8 @@ let currentLong
 let targetLat
 let targetLong
 
+// resset map zoom upon victory or giving up
+
 function initMap() {
     const myLatlng = { lat: 0, lng: 0 };
     const map = new google.maps.Map(document.getElementById("map"), {
