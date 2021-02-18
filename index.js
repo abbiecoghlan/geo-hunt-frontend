@@ -36,30 +36,45 @@ const addNavListeners = () => {
     if (event.target.id === 'puzzle-btn'){
       console.log('puzzlebutton')
       interfaceDiv.innerHTML = ""
-      if (puzzleInterfaceShowing){
-        stopTimer()
-        togglePuzzleInterface()
-      }
+      puzzleVibeCheck()
       displayPuzzles()
     }
 
     if (event.target.id === 'home-btn'){
       console.log('you pushed the home button')
+      interfaceDiv.innerHTML = ""
+      puzzleVibeCheck()
     }
 
     if (event.target.id === 'login-btn'){
       console.log('you pushed the login button')
+      interfaceDiv.innerHTML = ""
+      puzzleVibeCheck()
+      displayLoginForm()
     }
 
     if (event.target.id === 'leaderboard-btn'){
       console.log('you pushed the leaderboard button')
+      interfaceDiv.innerHTML = ""
+      puzzleVibeCheck()
     }
 
     if (event.target.id === 'profile-btn'){
       console.log('you pushed the profile button')
+      interfaceDiv.innerHTML = ""
+      puzzleVibeCheck()
     }
   })
 }
+
+
+const puzzleVibeCheck = () => {
+  if (puzzleInterfaceShowing){
+    stopTimer()
+    togglePuzzleInterface()
+  }
+}
+
 
 const addInterfaceListeners = () => {
 
@@ -84,8 +99,12 @@ const addPuzzleInterfaceListeners = () => {
     if (event.target.id === 'submit-btn'){
       verify(targetLat, targetLong, currentLat, currentLong, )
     }
+
   })
 }
+
+
+
 
 // const togglePuzzleInterface = () => {
 //   if (!puzzleInterfaceShowing){
