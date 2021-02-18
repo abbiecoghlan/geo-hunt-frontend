@@ -124,4 +124,9 @@ const loginUser = (e) => {
     console.log("you want to login a user")
 }
 
-// logout function
+const logout = () => {
+    userId = false
+    username = false
+    interfaceDiv.innerHTML = ""
+    displayHome()
+}

@@ -1,6 +1,6 @@
 let puzzleInterfaceShowing = false
-let userId
-let username
+let userId = false
+let username = false
 
 const baseUrl = 'http://localhost:3000'
 const puzzlesUrl = 'http://localhost:3000/puzzles'
@@ -17,6 +17,7 @@ const cluesUl =  document.getElementById("clues")
 
 
 const main = () => {
+  displayHome()
   addNavListeners()
   addPuzzleInterfaceListeners()
 }
@@ -48,6 +49,7 @@ const addNavListeners = () => {
       console.log('you pushed the home button')
       interfaceDiv.innerHTML = ""
       puzzleVibeCheck()
+      displayHome()
     }
 
     if (event.target.id === 'login-btn'){
@@ -78,7 +80,6 @@ const addNavListeners = () => {
     }
   })
 }
-
 
 const puzzleVibeCheck = () => {
   if (puzzleInterfaceShowing){
