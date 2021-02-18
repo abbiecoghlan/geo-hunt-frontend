@@ -89,16 +89,7 @@ const puzzleVibeCheck = () => {
 }
 
 
-const addInterfaceListeners = () => {
 
-  interfaceDiv.addEventListener('click', event => {
-    event.preventDefault()
-
-    if (event.target.id === 'puzzle-select'){
-      loadPuzzle(event.target)
-    }
-  }
-)}
 
 const addPuzzleInterfaceListeners = () => {
 
@@ -128,11 +119,35 @@ const togglePuzzleInterface = () => {
   }
 }
 
+
+
+const addInterfaceListeners = () => {
+
+}
+
+
+
+
 const displayPuzzles = () => {
+
+  const puzzleDiv = document.createElement('div')
+
+  puzzleDiv.addEventListener('click', event => {
+    event.preventDefault()
+
+    if (event.target.id === 'puzzle-select'){
+      loadPuzzle(event.target)
+    }
+  })
+
+
   const ul = document.createElement('ul')
   const puzzleHeader = document.createElement('h2')
   puzzleHeader.innerText = 'Browse Puzzles'
-  interfaceDiv.append(puzzleHeader, ul)
+
+
+  puzzleDiv.append(puzzleHeader, ul)
+  interfaceDiv.append(puzzleDiv)
 
   fetchData(puzzlesUrl)
   .then(puzzles => puzzles.forEach(puzzle => renderPuzzleLi(puzzle, ul))
