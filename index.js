@@ -61,6 +61,7 @@ const addNavListeners = () => {
       console.log('you pushed the leaderboard button')
       interfaceDiv.innerHTML = ""
       puzzleVibeCheck()
+      displayLeaderboard()
     }
 
     if (event.target.id === 'profile-btn'){

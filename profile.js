@@ -10,6 +10,7 @@ const displayProfile = () => {
         tableTitle.innerText = 'Attempts Record'
 
         const table = document.createElement('table')
+        table.className = "table table-hover table-sm tabel-responsive table-success"
         table.innerHTML = 
         `
         <thead>
