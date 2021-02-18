@@ -6,6 +6,8 @@ const baseUrl = 'http://localhost:3000'
 const puzzlesUrl = 'http://localhost:3000/puzzles'
 const attemptsUrl = 'http://localhost:3000/attempts'
 const loginUrl = 'http://localhost:3000/login'
+const userUrl = 'http://localhost:3000/users'
+
 
 const puzzleInterfaceDiv = document.getElementById('puzzle-interface')
 const interfaceDiv = document.getElementById('interface')
@@ -65,6 +67,14 @@ const addNavListeners = () => {
       console.log('you pushed the profile button')
       interfaceDiv.innerHTML = ""
       puzzleVibeCheck()
+      displayProfile()
+    }
+
+    if (event.target.id === 'logout-btn'){
+      console.log('you pushed the logout button')
+      interfaceDiv.innerHTML = ""
+      puzzleVibeCheck()
+      logout()
     }
   })
 }

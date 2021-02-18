@@ -105,6 +105,7 @@ const addLoginListeners = () => {
                 const loginButton = document.querySelector('#login-btn')
                 loginButton.innerText = 'Logout'
                 loginButton.id = 'logout-btn'
+                interfaceDiv.innerHTML = ""
                 displayProfile()
 
             }
@@ -122,3 +123,5 @@ const displayCreateUserForm = (e) => {
 const loginUser = (e) => {
     console.log("you want to login a user")
 }
+
+// logout function
