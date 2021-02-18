@@ -1,29 +1,19 @@
 const displayProfile = () => {
     fetchData(userUrl + `/${userId}`)
     .then(user => {
-
-      let puzzleArray = []
-
-      user.attempts.forEach(attempt => {
-          const puzzle = attempt.puzzle
-          debugger
-          if (!puzzleArray.includes(puzzle)){
-              return puzzleArray.push(puzzle)
-          }
-      })
-
       
         console.log(user)
         const username = document.createElement('h1')
         username.innerText = `Welcome, ${user.username}`
+
+        const tableTitle = document.createElement('p')
+        tableTitle.innerText = 'Attempts Record'
 
         const table = document.createElement('table')
         table.innerHTML = 
         `
         <thead>
           <tr>
-            <th>Attempt</th>
-
             <th>Puzzle</th>      
             <th>Status</th>
             <th>Time Taken</th>
@@ -31,17 +21,25 @@ const displayProfile = () => {
         </thead>
 
         <tbody>
-          <tr>
-            <td>${user.attempts[0].puzzle.title}</td>
-            <td>${user.attempts[0].puzzle.title}</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr></tr>
         </tbody>
         `
+        interfaceDiv.append(username, tableTitle, table)
 
-        interfaceDiv.append(username, table)
+        user.attempts.forEach(attempt => {
+
+          const tr = document.createElement('tr')
+          const body = document.querySelector('tbody')
+
+          tr.innerHTML = 
+          `
+          <td>${attempt.puzzle.title}</td>
+          <td>${attempt.status}</td>
+          <td>${attempt.time_taken}</td>
+          `
+          body.append(tr)
+          
+        })
+
 
 
 
