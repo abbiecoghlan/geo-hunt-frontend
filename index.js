@@ -1,6 +1,6 @@
 let puzzleInterfaceShowing = false
-let userId = 1
-let username = "thatsabbie"
+let userId
+let username
 
 const baseUrl = 'http://localhost:3000'
 const puzzlesUrl = 'http://localhost:3000/puzzles'
@@ -236,7 +236,7 @@ const renderClues = (clueArray) => {
 // }
 
 const revealClue = () => {
-  console.log("hello world")
+
   const cluesLiArray = document.getElementsByClassName("hint")
 
   for (i = 0; i < cluesLiArray.length; i++){
@@ -253,7 +253,7 @@ const puzzleCompletion = () => {
   const attemptId = parseInt(submitBtn.dataset.attemptId, 10)
 
   const attemptObj = {
-    status: 'completed',
+    status: 'Completed',
     timeTaken: 10.5
   }
 
