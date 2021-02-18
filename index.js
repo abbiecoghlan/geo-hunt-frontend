@@ -260,10 +260,11 @@ const puzzleCompletion = () => {
   // render victory screen
   stopTimer()
   const attemptId = parseInt(submitBtn.dataset.attemptId, 10)
-  
+  const stopwatch = document.getElementById('stopwatch').innerText
+
   const attemptObj = {
     status: 'Completed',
-    timeTaken: 10.5
+    timeTaken: stopwatch
   }
 
   const reqObj = {
