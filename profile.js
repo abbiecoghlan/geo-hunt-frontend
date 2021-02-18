@@ -1,23 +1,36 @@
 const displayProfile = () => {
-    fetchData(profileUrl + `/${userId}`)
+    fetchData(userUrl + `/${userId}`)
     .then(user => {
 
         console.log(user)
-    //     const username = document.createElement('h1')
-    //     username.innerText = `Welcome, ${user.name}`
+        const username = document.createElement('h1')
+        username.innerText = `Welcome, ${profile.user.username}`
 
-    //     const table = document.createElement('table')
-    //     table.innerHTML = 
-    //     `<thead>
-    //     <tr>
-    //       <th>PUZZLE</th>
-    //       <th>STATUS</th>
-    //       <th>TIME TAKEN</th>      
-    //       <th>STATUS</th>
-    //     </tr>
-    //   </thead>`
+        const table = document.createElement('table')
+        table.innerHTML = 
+        `
+        <thead>
+          <tr>
+            <th>PUZZLE</th>
 
-    //     interfaceDiv.append(username, table)
+            <th>Attempts</th>      
+            <th>STATUS</th>
+            <th>STATUS</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>${profile.puzzles[0].title}</td>
+            <td>${profile.puzzles[0].status}</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr></tr>
+        </tbody>
+        `
+
+        interfaceDiv.append(username)
 
 
 
