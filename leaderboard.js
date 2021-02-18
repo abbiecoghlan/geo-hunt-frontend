@@ -84,8 +84,8 @@ const displayLeaderboard = () => {
                 <td>${user.attempts.length}</td>
                 <td>${completedAttempts.length}</td>
                 <td>${failedAttempts.length}</td>
-                <td>${minPlayTime}</td>
-                <td>${maxPlayTime}</td>
+                <td>${minPlayTime} seconds</td>
+                <td>${maxPlayTime} seconds</td>
                 `
 
 
