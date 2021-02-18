@@ -50,7 +50,6 @@ const displayLeaderboard = () => {
     interfaceDiv.append(leaderboardDiv)
 
     fetchData(userUrl)
-   
     .then(users => {
       
         users.forEach(user =>
@@ -58,6 +57,10 @@ const displayLeaderboard = () => {
                 console.log(user)
                 console.log(user.attempts.length)
                 const tr = document.createElement('tr')
+                tr.dataset.id = user.id
+                tr.addEventListener("click", displayUserProfile)
+
+
                 const body = document.querySelector('tbody')
 
                 // let userAttempts = user.attempts
@@ -72,11 +75,7 @@ const displayLeaderboard = () => {
                 const maxPlayTime = Math.max(...playTime)
                 const minPlayTime = Math.min(...playTime)
 
-
-
-
-
-        
+                
                 tr.innerHTML = 
                 `
                 <td>${user.username}</td>
@@ -87,36 +86,56 @@ const displayLeaderboard = () => {
                 <td>${minPlayTime} seconds</td>
                 <td>${maxPlayTime} seconds</td>
                 `
-
-
                 body.append(tr)
             })
-
-
         
+    })
+}
 
 
+const displayUserProfile = (e) => {
+    interfaceDiv.innerHTML = ""
+    fetchData(userUrl + `/${e.target.parentElement.dataset.id}`)
+    .then(user => {
+      
+        console.log(user)
+        const username = document.createElement('h1')
+        username.innerText = `${user.username}`
 
-        // debugger
+        const tableTitle = document.createElement('p')
+        tableTitle.innerText = 'Attempts Record'
 
+        const table = document.createElement('table')
+        table.className = "table table-hover table-sm tabel-responsive table-success"
+        table.innerHTML = 
+        `
+        <thead>
+          <tr>
+            <th>Puzzle</th>      
+            <th>Status</th>
+            <th>Time Taken</th>
+          </tr>
+        </thead>
 
-        // user.attempts.forEach(attempt => {
+        <tbody>
+        </tbody>
+        `
+        interfaceDiv.append(username, tableTitle, table)
 
-        //   const tr = document.createElement('tr')
-        //   const body = document.querySelector('tbody')
+        user.attempts.forEach(attempt => {
 
-        //   tr.innerHTML = 
-        //   `
-        //   <td>${attempt.puzzle.title}</td>
-        //   <td>${attempt.status}</td>
-        //   <td>${attempt.time_taken}</td>
-        //   `
-        //   body.append(tr)
+          const tr = document.createElement('tr')
+          const body = document.querySelector('tbody')
+
+          tr.innerHTML = 
+          `
+          <td>${attempt.puzzle.title}</td>
+          <td>${attempt.status}</td>
+          <td>${attempt.time_taken}</td>
+          `
+          body.append(tr)
           
-        // })
-
-
-
+        })
 
     })
 }
