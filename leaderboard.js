@@ -22,6 +22,7 @@ const displayLeaderboard = () => {
     const leaderboardDiv = document.createElement('div')
     const leaderboardHeader = document.createElement('h1')
     leaderboardHeader.innerText = `Geo Hunt Player Stats`
+    leaderboardHeader.className = 'text-center'
     leaderboardHeader.style.paddingTop = "10px"
     leaderboardHeader.style.paddingBottom = "10px"
 
