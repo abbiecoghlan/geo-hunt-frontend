@@ -127,40 +127,47 @@ const displayPuzzles = () => {
 
     if (event.target.id === 'puzzle-select' && userId){
       loadPuzzle(event.target)
-    } else {
+    } else if (event.target.id === 'puzzle-select' && !userId) {
       interfaceDiv.innerHTML = ""
       displayLoginForm()
     }
   })
 
 
-  const ul = document.createElement('ul')
+  const cardContainer = document.createElement('div')
   const puzzleHeader = document.createElement('h2')
   puzzleHeader.innerText = 'Browse Puzzles'
 
 
-  puzzleDiv.append(puzzleHeader, ul)
+  puzzleDiv.append(puzzleHeader, cardContainer)
   interfaceDiv.append(puzzleDiv)
 
   fetchData(puzzlesUrl)
-  .then(puzzles => puzzles.forEach(puzzle => renderPuzzleLi(puzzle, ul))
+  .then(puzzles => puzzles.forEach(puzzle => renderPuzzleLi(puzzle, cardContainer))
   )
 }
 
-const renderPuzzleLi = (puzzle, ul) => {
+const renderPuzzleLi = (puzzle, cardContainer) => {
 
-  const li = document.createElement('li')
-// make li look like a link
-  li.innerText = `${puzzle.title} - ${puzzle.difficulty}`
-  li.id = 'puzzle-select'
-  li.dataset.id = puzzle.id
+  const card = document.createElement('div')
+  card.className = 'card'
+  const title = document.createElement('h4')
+  title.innerText = `${puzzle.title}`
+
+  const difficulty = document.createElement('p')
+  difficulty.innerText = capitalize(puzzle.difficulty)
+
+  card.id = 'puzzle-select'
+  card.dataset.id = puzzle.id
+  
 
   // completion percentage
   // highest rated
   // most played
   // add difficulty categorizer/sections
 
-  ul.append(li)
+  cardContainer.append(card)
+  card.append(title, difficulty)
 }
 
 const loadPuzzle = (eventTarget) => {
@@ -302,6 +309,11 @@ const renderSuccess = (attempt) => {
   div.append(vMessage, locationP, timeP)
   interfaceDiv.append(div)
 
+}
+
+const capitalize = (string) => {
+  const lower = string.toLowerCase()
+  return string.charAt(0).toUpperCase() + lower.slice(1)
 }
 
 main()
