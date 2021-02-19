@@ -23,6 +23,7 @@ const displayLoginForm = () => {
 
     const loginDiv = document.createElement('div')
     loginDiv.className = "text-center"
+    loginDiv.id = 'login-div'
     
     const loginHeader = document.createElement('h1')
     loginHeader.innerText = "Login"
@@ -63,7 +64,7 @@ const displayLoginForm = () => {
     const newAccountButton = document.createElement('button')
     newAccountButton.className = "text-center"
     newAccountButton.id = "new-account-btn"
-    newAccountButton.innerText = "Create an account"
+    newAccountButton.innerText = "Sign Up"
     newAccountButton.className = "text-center"
 
     loginDiv.append(loginForm, newAccountHeader, newAccountButton)   
@@ -111,17 +112,99 @@ const addLoginListeners = () => {
             console.table(user)
         })
     })
+
+    const newAccountButton = document.getElementById('new-account-btn')
+
+    newAccountButton.addEventListener('click', event => {
+        event.preventDefault()
+        displayCreateUserForm()
+    })
 }
 
 
 
 const displayCreateUserForm = (e) => {
     console.log("you want to display a new user form")
+    interfaceDiv.innerHTML = 
+    `
+    <div>
+        <form id="new-form">
+            <h1 class="text-center">Sign Up</h1>
+            <div style="margin-left: 40%;">
+                <label>Username:  </label>
+                <input id="username" name="username" type="text" placeholder="Enter username">
+                <br>
+                <label>Password:  </label>
+                <input id="password" name="password" type="password" placeholder="password">
+                <br>
+                <label>Confirm:  </label>
+                <input id="password-confirm" name="confirm-password" type="password" placeholder="confirm-password">
+                <br>
+                <button id="submit-btn" style="margin-left: 13%" type="submit">Submit</button>
+            </div>
+        </form>
+        <div class="text-center" id="confirm-message" style="display: none">
+            Passwords do not match and must have username
+        </div>
+    </div>
+    `
+
+    addCreateAccountListener()
 }
 
 // const loginUser = (e) => {
 //     console.log("you want to login a user")
 // }
+
+const addCreateAccountListener = () => {
+    const newForm = document.querySelector('#new-form')
+    // const loginButton = document.querySelector('#submit-btn')
+
+    newForm.addEventListener('submit', event => {
+        event.preventDefault()
+        if (document.querySelector('#password').value === document.querySelector('#password-confirm').value && document.querySelector('#username').value){
+            console.log('submit button pressed')
+            
+            const credentials = {
+                username: document.querySelector('#username'),
+                password: document.querySelector('#password')
+            }
+
+            const reqObj = {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: "application/json"
+                },
+                body: JSON.stringify(credentials)
+            }
+
+            fetchDataWithReqObj(loginUrl, reqObj)
+            .then(user => {
+                if (!userId){
+                    userId = user.id
+                    username = user.username
+                    const loginButton = document.querySelector('#login-btn')
+                    loginButton.innerText = 'Logout'
+                    loginButton.id = 'logout-btn'
+                    interfaceDiv.innerHTML = ""
+                    const profileButton = document.getElementById('profile-btn')
+                    profileButton.style.display = ""
+                    profileButton.innerText = user.username
+                    displayProfile()
+
+                }
+                console.table(user)
+            })
+        } else {
+            const message = document.getElementById('confirm-message')
+            message.style.display = ""
+            setTimeout(() => {
+                message.style.display = "none"
+            }, 4000)
+        }
+    })
+}
 
 const logout = () => {
     userId = false
