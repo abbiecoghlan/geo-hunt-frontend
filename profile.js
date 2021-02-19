@@ -5,9 +5,11 @@ const displayProfile = () => {
         console.log(user)
         const username = document.createElement('h1')
         username.innerText = `Welcome, ${user.username}`
+        username.className = 'text-center'
 
         const tableTitle = document.createElement('p')
         tableTitle.innerText = 'Attempts Record'
+        tableTitle.className = 'text-center'
 
         const table = document.createElement('table')
         table.className = "table table-hover table-sm tabel-responsive table-success"
