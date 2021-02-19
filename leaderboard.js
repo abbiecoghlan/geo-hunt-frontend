@@ -72,12 +72,26 @@ const displayLeaderboard = () => {
                 // console.log(completedAttempts.length)
 
 
-                const playTime = completedAttempts.map(attempt => attempt.time_taken)
-                const maxPlayTime = Math.max(...playTime)
-                const minPlayTime = Math.min(...playTime)
-
-                
-                tr.innerHTML = 
+                let playTime = completedAttempts.map(attempt => attempt.time_taken)
+                let maxPlayTime
+                let minPlayTime
+                if (playTime.length < 1){
+                  maxPlayTime = "n/a"
+                  minPlayTime = "n/a"
+                  tr.innerHTML = 
+                `
+                <td>${user.username}</td>
+                <td>${user.name}</td>
+                <td>${user.attempts.length}</td>
+                <td>${completedAttempts.length}</td>
+                <td>${failedAttempts.length}</td>
+                <td>${minPlayTime}</td>
+                <td>${maxPlayTime}</td>
+                `
+                } else {
+                  maxPlayTime = Math.max(...playTime)
+                  minPlayTime = Math.min(...playTime)
+                  tr.innerHTML = 
                 `
                 <td>${user.username}</td>
                 <td>${user.name}</td>
@@ -87,6 +101,8 @@ const displayLeaderboard = () => {
                 <td>${minPlayTime} seconds</td>
                 <td>${maxPlayTime} seconds</td>
                 `
+                }
+                
                 body.append(tr)
             })
         
