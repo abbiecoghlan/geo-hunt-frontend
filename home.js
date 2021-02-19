@@ -7,7 +7,7 @@ const displayHome = () => {
 
     homeDiv.className = 'text-center'
 
-    const greeting = document.createElement('h3')
+    const greeting = document.createElement('h1')
     greeting.innerText = "welcome to ..."
     homeDiv.append(greeting)
     interfaceDiv.append(homeDiv)
