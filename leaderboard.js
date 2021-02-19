@@ -71,7 +71,7 @@ const displayLeaderboard = () => {
                 console.log(completedAttempts.length)
 
 
-                const playTime = user.attempts.map(attempt => attempt.time_taken)
+                const playTime = completedAttempts.map(attempt => attempt.time_taken)
                 const maxPlayTime = Math.max(...playTime)
                 const minPlayTime = Math.min(...playTime)
 

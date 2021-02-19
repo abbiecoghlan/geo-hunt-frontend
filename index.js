@@ -166,6 +166,7 @@ const renderPuzzleLi = (puzzle, cardContainer) => {
   button.innerText = 'Start'
   button.className = "btn btn-primary mr-1 start-btn"
   
+
   span.append(button)
 
   const difficulty = document.createElement('p')
@@ -178,6 +179,15 @@ const renderPuzzleLi = (puzzle, cardContainer) => {
 
   cardContainer.append(card)
   card.append(title, span, difficulty)
+  
+  // if (puzzle.preview_image) {
+  //   const image = document.createElement('img')
+  //   image.setAttribute("src", puzzle.preview_image)
+  //   image.setAttribute("width", "200")
+  //   image.setAttribute("height", "200")
+  //   card.append(image)
+  //   }
+
 }
 
 const loadPuzzle = (eventTarget) => {
@@ -304,8 +314,22 @@ const puzzleCompletion = () => {
 }
 
 const renderSuccess = (attempt) => {
+
+ 
+
+
+
   const div = document.createElement('div')
-  div.className = 'text-center'
+  div.className = 'my-4 text-center'
+
+  if (attempt.puzzle.solution_image) {
+    const image = document.createElement('img')
+    image.setAttribute("src", attempt.puzzle.solution_image)
+    image.setAttribute("width", "600")
+    image.setAttribute("height", "400")
+    image.setAttribute("padding", "40px")
+    div.append(image)
+    }
 
   const vMessage = document.createElement('h1')
   vMessage.innerText = 'You Found it!'
