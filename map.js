@@ -87,7 +87,7 @@ function initMap() {
         position: mapsMouseEvent.latLng,
       });
       infoWindow.setContent(
-        JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+        "Location Selected"
       );
       infoWindow.open(map);
 
