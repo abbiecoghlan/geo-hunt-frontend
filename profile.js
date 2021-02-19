@@ -31,8 +31,11 @@ const displayProfile = () => {
         button.dataset.id = user.id
         button.className = "btn btn-danger mr-1"
         button.id = "reset-btn"
+        const buttonDiv = document.createElement('div')
+        buttonDiv.className = 'text-center'
+        buttonDiv.append(button)
         
-        interfaceDiv.append(username, tableTitle, table, button)
+        interfaceDiv.append(username, tableTitle, table, buttonDiv)
 
         user.attempts.forEach(attempt => {
 
