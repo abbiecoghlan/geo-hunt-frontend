@@ -129,3 +129,19 @@ html, body {
   height: 40px;
   width: 80px;
 }
+
+.intro{
+  margin-left: 30%;
+  margin-right: 30%;
+  font-size: 17px;
+}
+
+.compass{
+  height: 250px;
+  width: auto;
+  opacity: 80%;
+}
+
+.greeting{
+  padding-top: 30px;
+}
