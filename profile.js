@@ -2,7 +2,7 @@ const displayProfile = () => {
     fetchData(userUrl + `/${userId}`)
     .then(user => {
       
-        console.log(user)
+        // console.log(user)
         const username = document.createElement('h1')
         username.innerText = `Welcome, ${user.username}`
         username.className = 'text-center'
@@ -26,7 +26,13 @@ const displayProfile = () => {
         <tbody>
         </tbody>
         `
-        interfaceDiv.append(username, tableTitle, table)
+        const button = document.createElement('button')
+        button.innerText = "Reset Account"
+        button.dataset.id = user.id
+        button.className = "btn btn-danger mr-1"
+        button.id = "reset-btn"
+        
+        interfaceDiv.append(username, tableTitle, table, button)
 
         user.attempts.forEach(attempt => {
 
@@ -50,34 +56,28 @@ const displayProfile = () => {
           
         })
 
-
+        addButtonListener()
 
 
     })
 }
 
-{/* <table>
-  <thead>
-    <tr>
-      <th>TITLE</th>
-      <th>CATEGORY</th>
-      <th>DESCRIPTION</th>      
-      <th>STATUS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user.listed_items.each do |l| %>
-      <tr>
-        <td><%= link_to "#{l.title}", l  %></td>
-        <td><%= l.category.name %></td>
-        <td><%= l.description %></td>
-        <td> 
-             <% if l.claimed %>
-         <%= "Item has been claimed" %>
-                   <% else %>
-          <%= "Item is available" %>
-          <% end %> </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table> */}
+const addButtonListener = () => {
+  const button = document.getElementById('reset-btn')
+
+  button.addEventListener('click', event => {
+    event.preventDefault()
+
+    const reqObj = {
+      method: 'DELETE'
+    }
+
+    fetchDataWithReqObj(resetUrl + `/${event.target.dataset.id}`, reqObj)
+    .then(message => {
+      interfaceDiv.innerHTML=""
+      displayProfile()
+      alert(message.message)
+    })
+
+  })
+}

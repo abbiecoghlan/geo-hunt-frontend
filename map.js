@@ -90,9 +90,11 @@ function initMap() {
         "Location Selected"
       );
       infoWindow.open(map);
-
+      
+      
       currentLat = mapsMouseEvent.latLng.toJSON().lat
       currentLong = mapsMouseEvent.latLng.toJSON().lng
+      console.log(currentLat, currentLong)
 
     });
   }

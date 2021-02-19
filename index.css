@@ -134,6 +134,7 @@ html, body {
   margin-left: 30%;
   margin-right: 30%;
   font-size: 17px;
+  padding-top: 17px;
 }
 
 .compass{
@@ -144,4 +145,5 @@ html, body {
 
 .greeting{
   padding-top: 30px;
+  padding-bottom: 10px;
 }

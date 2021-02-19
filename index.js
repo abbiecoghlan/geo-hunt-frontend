@@ -8,6 +8,7 @@ const attemptsUrl = 'http://localhost:3000/attempts'
 const loginUrl = 'http://localhost:3000/login'
 const userUrl = 'http://localhost:3000/users'
 const profileUrl = 'http://localhost:3000/profile'
+const resetUrl = 'http://localhost:3000/reset'
 
 
 const puzzleInterfaceDiv = document.getElementById('puzzle-interface')
