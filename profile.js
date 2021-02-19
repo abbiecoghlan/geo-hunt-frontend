@@ -30,12 +30,19 @@ const displayProfile = () => {
 
           const tr = document.createElement('tr')
           const body = document.querySelector('tbody')
+          
+          let time
+          if (!attempt.time_taken) 
+            { time = "n/a"
+          } else {
+            time = attempt.time_taken
+          }
 
           tr.innerHTML = 
           `
           <td>${attempt.puzzle.title}</td>
           <td>${attempt.status}</td>
-          <td>${attempt.time_taken}</td>
+          <td>${time}</td>
           `
           body.append(tr)
           
