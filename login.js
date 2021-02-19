@@ -111,7 +111,7 @@ const addLoginListeners = () => {
                 displayProfile()
 
             }
-        })
+        }).catch(alert("Incorrect username or password, please try again."))
     })
 
     const newAccountButton = document.getElementById('new-account-btn')
