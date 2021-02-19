@@ -54,8 +54,8 @@ const displayLeaderboard = () => {
       
         users.forEach(user =>
             {
-                console.log(user)
-                console.log(user.attempts.length)
+                // console.log(user)
+                // console.log(user.attempts.length)
                 const tr = document.createElement('tr')
                 tr.dataset.id = user.id
                 tr.addEventListener("click", displayUserProfile)
@@ -65,10 +65,10 @@ const displayLeaderboard = () => {
 
                 // let userAttempts = user.attempts
                 const failedAttempts = user.attempts.filter(attempt => attempt.status === "Failed")
-                console.log(failedAttempts.length)
+                // console.log(failedAttempts.length)
 
                 const completedAttempts = user.attempts.filter(attempt => attempt.status === "Completed")
-                console.log(completedAttempts.length)
+                // console.log(completedAttempts.length)
 
 
                 const playTime = completedAttempts.map(attempt => attempt.time_taken)
@@ -98,7 +98,7 @@ const displayUserProfile = (e) => {
     fetchData(userUrl + `/${e.target.parentElement.dataset.id}`)
     .then(user => {
       
-        console.log(user)
+        // console.log(user)
         const username = document.createElement('h1')
         username.innerText = `${user.username}`
 
