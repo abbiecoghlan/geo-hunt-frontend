@@ -140,6 +140,7 @@ const displayPuzzles = () => {
   const puzzleHeader = document.createElement('h2')
   puzzleHeader.innerText = 'Browse Puzzles'
   puzzleHeader.className = 'text-center'
+  puzzleHeader.style = "padding-top: 19px"
 
 
   puzzleDiv.append(puzzleHeader, cardContainer)
