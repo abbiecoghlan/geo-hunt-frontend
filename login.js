@@ -27,7 +27,7 @@ const displayLoginForm = () => {
     
     const loginHeader = document.createElement('h1')
     loginHeader.innerText = "Login"
-    loginHeader.className = "text-center"
+    loginHeader.className = "text-center my-3"
 
     const loginForm = document.createElement('form')
     loginForm.className = "text-center"
@@ -39,7 +39,7 @@ const displayLoginForm = () => {
     const usernameInput = document.createElement('input')
     usernameInput.name = "username"
     usernameInput.type = "text"
-    usernameInput.placeholder = "Enter username"
+    usernameInput.placeholder = "Enter Username"
 
     const newBreak = document.createElement('br')
 
@@ -48,24 +48,26 @@ const displayLoginForm = () => {
     const passwordInput = document.createElement('input')
     passwordInput.name = "password"
     passwordInput.type = "password"
-    passwordInput.placeholder = "password"
+    passwordInput.placeholder = "Enter Password"
+
+    const newNewBreak = document.createElement('br')
 
     const submitButton = document.createElement('button')
     submitButton.id = "submit-btn"
-    submitButton.innerHTML = "Submit"
-    submitButton.className = "text-center"
+    submitButton.innerHTML = "Login"
+    submitButton.className = "btn btn-primary align-bottom btn-sm mr-1"
     submitButton.type = "submit"
 
-    loginForm.append(loginHeader, usernameLabel, usernameInput, newBreak, passwordLabel, passwordInput, submitButton)
+    loginForm.append(loginHeader, usernameLabel, usernameInput, newBreak, passwordLabel, passwordInput, newNewBreak, submitButton)
     
     const newAccountHeader = document.createElement('h3')
     newAccountHeader.innerText = "New to Geo Hunt?"
-    newAccountHeader.className = "text-center"
+    newAccountHeader.className = "text-center my-2"
     const newAccountButton = document.createElement('button')
-    newAccountButton.className = "text-center"
+    newAccountButton.className = "btn btn-primary align-bottom btn-sm mr-1"
     newAccountButton.id = "new-account-btn"
     newAccountButton.innerText = "Sign Up"
-    newAccountButton.className = "text-center"
+    // newAccountButton.className = "text-center"
 
     loginDiv.append(loginForm, newAccountHeader, newAccountButton)   
     interfaceDiv.append(loginDiv)
@@ -129,20 +131,20 @@ const displayCreateUserForm = (e) => {
     <div>
         <form id="new-form">
             <h1 class="text-center">Sign Up</h1>
-            <div style="margin-left: 40%;">
+            <div class="text-center" >
                 <label>Name:  </label>
-                <input id="name" name="name" type="text" placeholder="Enter name">
+                <input id="name" name="name" type="text" placeholder="Enter Name">
                 <br>
                 <label>Username:  </label>
-                <input id="username" name="username" type="text" placeholder="Enter username">
+                <input id="username" name="username" type="text" placeholder="Enter Username">
                 <br>
                 <label>Password:  </label>
-                <input id="password" name="password" type="password" placeholder="password">
+                <input id="password" name="password" type="password" placeholder="Enter Password">
                 <br>
                 <label>Confirm:  </label>
-                <input id="password-confirm" name="confirm-password" type="password" placeholder="confirm-password">
+                <input id="password-confirm" name="confirm-password" type="password" placeholder="Confirm Password">
                 <br>
-                <button id="submit-btn" style="margin-left: 13%" type="submit">Submit</button>
+                <button id="submit-btn" class="btn btn-primary align-bottom btn-sm mr-1" type="submit">Submit</button>
             </div>
         </form>
         <div class="text-center" id="confirm-message" style="display: none">

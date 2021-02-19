@@ -45,14 +45,14 @@
       <div id="puzzle" class='text-center'>
         <!-- make h1 smaller -->
         <!-- <span data-ng-bind="selected.palette.desc" class="ng-binding text-center"></span> -->
-        <h1 id='puzzle-name' class="lead mb-1 my-2 text-center"></h1>
-        <div id="stopwatch" class="btn btn-lg toggles-ignore mr-2 btn-outline-dark text-center">
+        <h3 id='puzzle-name' class="text-center"></h3>
+        <div id="stopwatch" class="btn btn-dark align-bottom btn-sm mr-1">
             00:00:00
         </div>
 
         <ul id="clues" class="lead mb-1 text-center"></ul>
-        <button id="clue-btn" class="btn btn-success align-bottom btn-lg mr-1">Show Next Hint</button>
-        <button id='submit-btn' class='btn btn-success align-bottom btn-lg mr-1'>Submit Location</button>
+        <button id="clue-btn" class="btn btn-primary align-bottom btn-sm mr-1">Show Next Hint</button>
+        <button id='submit-btn' class='btn btn-primary align-bottom btn-sm mr-1'>Submit Location</button>
         <div>
           <p style="display: none" id="incorrect">Incorrect. Keep looking!</p>
         </div>
