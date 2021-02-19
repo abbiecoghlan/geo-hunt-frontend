@@ -33,6 +33,7 @@ const displayProfile = () => {
         button.id = "reset-btn"
         const buttonDiv = document.createElement('div')
         buttonDiv.className = 'text-center'
+        buttonDiv.style = "padding-bottom: 20px;"
         buttonDiv.append(button)
         
         interfaceDiv.append(username, tableTitle, table, buttonDiv)
