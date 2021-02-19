@@ -44,14 +44,19 @@
 
       <div id="puzzle" class='text-center'>
         <!-- make h1 smaller -->
-        <h1 id='puzzle-name' class="text-dark"></h1>
-        <div id="stopwatch">
+        <h3 id='puzzle-name' class="lead mb-3 text-center py-3"><span data-ng-bind="selected.palette.desc" class="ng-binding">A virtual, global search game</span></h3>
+        <div id="stopwatch" class="btn btn-lg toggles-ignore mr-2 btn-outline-dark">
             00:00:00
         </div>
 
+        <!-- <button type="button" class="btn btn-success align-bottom btn-lg mr-1">Large</button> -->
+        <!-- <p class="lead mb-3"><span data-ng-bind="selected.palette.desc" class="ng-binding">A DIY starter theme.</span> <strong>Easily</strong> customize this, and other free Bootstrap 4 themes for your downloading pleasure.</p> -->
+
+        
+
         <ul id="clues"> </ul>
-        <button id="clue-btn">Show Next Hint</button>
-        <button id='submit-btn' class='align-items-center'>Submit Location</button>
+        <button id="clue-btn" class="btn btn-success align-bottom btn-lg mr-1">Show Next Hint</button>
+        <button id='submit-btn' class='btn btn-success align-bottom btn-lg mr-1'>Submit Location</button>
         <div>
           <p style="display: none" id="incorrect">Incorrect. Keep looking!</p>
         </div>
