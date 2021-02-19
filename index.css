@@ -124,3 +124,7 @@ html, body {
   margin: 1rem 2rem;
   box-shadow: 3px 4px #703B3B
 }
+.start-btn {
+  height: 40px;
+  width: 80px;
+}

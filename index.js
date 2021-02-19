@@ -152,16 +152,24 @@ const displayPuzzles = () => {
 const renderPuzzleLi = (puzzle, cardContainer) => {
 
   const card = document.createElement('div')
-  card.className = 'card'
+  card.className = 'card text-center'
+
   const title = document.createElement('h4')
   title.innerText = `${puzzle.title}`
 
+  const span = document.createElement('span')
+  span.class = "text-center"
+  
+  const button = document.createElement('button')
+  button.id = 'puzzle-select'
+  button.dataset.id = puzzle.id
+  button.innerText = 'Start'
+  button.className = "btn btn-primary mr-1 start-btn"
+  
+  span.append(button)
+
   const difficulty = document.createElement('p')
   difficulty.innerText = capitalize(puzzle.difficulty)
-
-  card.id = 'puzzle-select'
-  card.dataset.id = puzzle.id
-  
 
   // completion percentage
   // highest rated
@@ -169,7 +177,7 @@ const renderPuzzleLi = (puzzle, cardContainer) => {
   // add difficulty categorizer/sections
 
   cardContainer.append(card)
-  card.append(title, difficulty)
+  card.append(title, span, difficulty)
 }
 
 const loadPuzzle = (eventTarget) => {
