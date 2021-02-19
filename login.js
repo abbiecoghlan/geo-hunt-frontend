@@ -109,7 +109,6 @@ const addLoginListeners = () => {
                 displayProfile()
 
             }
-            console.table(user)
         })
     })
 
@@ -131,6 +130,9 @@ const displayCreateUserForm = (e) => {
         <form id="new-form">
             <h1 class="text-center">Sign Up</h1>
             <div style="margin-left: 40%;">
+                <label>Name:  </label>
+                <input id="name" name="name" type="text" placeholder="Enter name">
+                <br>
                 <label>Username:  </label>
                 <input id="username" name="username" type="text" placeholder="Enter username">
                 <br>
@@ -144,7 +146,7 @@ const displayCreateUserForm = (e) => {
             </div>
         </form>
         <div class="text-center" id="confirm-message" style="display: none">
-            Passwords do not match and must have username
+            Passwords do not match and must have name and username
         </div>
     </div>
     `
@@ -162,12 +164,13 @@ const addCreateAccountListener = () => {
 
     newForm.addEventListener('submit', event => {
         event.preventDefault()
-        if (document.querySelector('#password').value === document.querySelector('#password-confirm').value && document.querySelector('#username').value){
+        if (document.querySelector('#password').value === document.querySelector('#password-confirm').value && document.querySelector('#username').value && document.querySelector('#name').value){
             console.log('submit button pressed')
             
             const credentials = {
-                username: document.querySelector('#username'),
-                password: document.querySelector('#password')
+                name: document.querySelector('#name').value,
+                username: document.querySelector('#username').value,
+                password: document.querySelector('#password').value
             }
 
             const reqObj = {
@@ -179,7 +182,7 @@ const addCreateAccountListener = () => {
                 body: JSON.stringify(credentials)
             }
 
-            fetchDataWithReqObj(loginUrl, reqObj)
+            fetchDataWithReqObj(userUrl, reqObj)
             .then(user => {
                 if (!userId){
                     userId = user.id
@@ -192,9 +195,7 @@ const addCreateAccountListener = () => {
                     profileButton.style.display = ""
                     profileButton.innerText = user.username
                     displayProfile()
-
                 }
-                console.table(user)
             })
         } else {
             const message = document.getElementById('confirm-message')
