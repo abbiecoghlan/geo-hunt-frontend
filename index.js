@@ -1,3 +1,4 @@
+// "State"
 let puzzleInterfaceShowing = false
 let userId = false
 let username = false
@@ -9,7 +10,6 @@ const loginUrl = 'http://localhost:3000/login'
 const userUrl = 'http://localhost:3000/users'
 const profileUrl = 'http://localhost:3000/profile'
 const resetUrl = 'http://localhost:3000/reset'
-
 
 const puzzleInterfaceDiv = document.getElementById('puzzle-interface')
 const interfaceDiv = document.getElementById('interface')
@@ -37,53 +37,46 @@ const addNavListeners = () => {
   const nav = document.getElementById('nav-bar')
 
   nav.addEventListener('click', event => {
-    event.preventDefault()
 
     if (event.target.id === 'puzzle-btn'){
-      console.log('puzzlebutton')
       interfaceDiv.innerHTML = ""
-      puzzleVibeCheck()
+      puzzleCleanUp()
       displayPuzzles()
     }
 
     if (event.target.id === 'home-btn'){
-      console.log('you pushed the home button')
       interfaceDiv.innerHTML = ""
-      puzzleVibeCheck()
+      puzzleCleanUp()
       displayHome()
     }
 
     if (event.target.id === 'login-btn'){
-      console.log('you pushed the login button')
       interfaceDiv.innerHTML = ""
-      puzzleVibeCheck()
+      puzzleCleanUp()
       displayLoginForm()
     }
 
     if (event.target.id === 'leaderboard-btn'){
-      console.log('you pushed the leaderboard button')
       interfaceDiv.innerHTML = ""
-      puzzleVibeCheck()
+      puzzleCleanUp()
       displayLeaderboard()
     }
 
-    if (event.target.id === 'profile-btn'){
-      console.log('you pushed the profile button')
+    if (event.target.id === 'profile-btn'){ 
       interfaceDiv.innerHTML = ""
-      puzzleVibeCheck()
+      puzzleCleanUp()
       displayProfile()
     }
 
     if (event.target.id === 'logout-btn'){
-      console.log('you pushed the logout button')
       interfaceDiv.innerHTML = ""
-      puzzleVibeCheck()
+      puzzleCleanUp()
       logout()
     }
   })
 }
 
-const puzzleVibeCheck = () => {
+const puzzleCleanUp = () => {
   if (puzzleInterfaceShowing){
     stopTimer()
     togglePuzzleInterface()
@@ -91,18 +84,13 @@ const puzzleVibeCheck = () => {
 }
 
 const addPuzzleInterfaceListeners = () => {
-
   puzzleInterfaceDiv.addEventListener('click', event => { 
-    event.preventDefault()
-
     if (event.target.id === 'clue-btn'){
       revealClue()
     }
-
     if (event.target.id === 'submit-btn'){
       verify(targetLat, targetLong, currentLat, currentLong, radiusLimit)
     }
-
   })
 }
 
@@ -120,12 +108,9 @@ const togglePuzzleInterface = () => {
 
 
 const displayPuzzles = () => {
-
   const puzzleDiv = document.createElement('div')
 
   puzzleDiv.addEventListener('click', event => {
-    event.preventDefault()
-
     if (event.target.id === 'puzzle-select' && userId){
       loadPuzzle(event.target)
     } else if (event.target.id === 'puzzle-select' && !userId) {
@@ -134,14 +119,12 @@ const displayPuzzles = () => {
     }
   })
 
-
   const cardContainer = document.createElement('div')
   cardContainer.className = 'text-center'
   const puzzleHeader = document.createElement('h2')
   puzzleHeader.innerText = 'Browse Puzzles'
   puzzleHeader.className = 'text-center'
   puzzleHeader.style = "padding-top: 19px"
-
 
   puzzleDiv.append(puzzleHeader, cardContainer)
   interfaceDiv.append(puzzleDiv)
@@ -152,7 +135,6 @@ const displayPuzzles = () => {
 }
 
 const renderPuzzleLi = (puzzle, cardContainer) => {
-
   const card = document.createElement('div')
   card.className = 'card text-center'
 
@@ -168,20 +150,16 @@ const renderPuzzleLi = (puzzle, cardContainer) => {
   button.innerText = 'Start'
   button.className = "btn btn-primary mr-1 start-btn"
   
-
   span.append(button)
 
   const difficulty = document.createElement('p')
   difficulty.innerText = capitalize(puzzle.difficulty)
 
-  // completion percentage
-  // highest rated
-  // most played
-  // add difficulty categorizer/sections
-
   cardContainer.append(card)
   card.append(title, span, difficulty)
-  
+
+  // preview images on puzzle tiles (future feature)
+
   // if (puzzle.preview_image) {
   //   const image = document.createElement('img')
   //   image.setAttribute("src", puzzle.preview_image)
@@ -192,12 +170,12 @@ const renderPuzzleLi = (puzzle, cardContainer) => {
 
 }
 
+
+// fetch specfic puzzle utilizing the id stored in the event target, set global targetLat and targetLong
+// receive, render initial clue to screen toggling puzzle interface and timer
 const loadPuzzle = (eventTarget) => {
   cluesUl.innerHTML = ""
   togglePuzzleInterface()
-  // fetch specfic puzzle utilizing the id stored in the event target ~
-  // set our global targetLat and targetLong
-  // receive, render initial clue to screen toggling puzzle interface and timer
 
   const reqObj = {
     method: 'POST',
@@ -213,19 +191,8 @@ const loadPuzzle = (eventTarget) => {
     )
   }
 
-  // 'load puzzle'
-  // render puzzle interface
-    // title, 1st clue, clue buttons, timer, submit button, display current coordinates
-    // if submitted correctly
-      // stop timer
-      // de render puzzle interface and toggle interface div
-      // update attempt and show a victory page (picture of location?)
-        // suggestions - check out the leaderboards or your profile to view stats, or hit the puzzle tab to keep the puzzle train rolling
-
   fetchDataWithReqObj(attemptsUrl, reqObj)
-  .then(attempt => {
-    console.log(attempt)
-  
+  .then(attempt => { 
     setTargets(attempt.puzzle.latitude, attempt.puzzle.longitude, attempt.puzzle.radius_limit)
     renderPuzzleName(attempt.puzzle.title)
     renderClues(attempt.clues)
@@ -234,9 +201,6 @@ const loadPuzzle = (eventTarget) => {
     
     const submitBtn = document.getElementById('submit-btn')
     submitBtn.dataset.attemptId = attempt.id
-
-    console.log(targetLat)
-    console.log(targetLong)
   })  
 }
 
@@ -252,7 +216,6 @@ const renderPuzzleName = (title) => {
 }
 
 const renderClues = (clueArray) => {
-  
   const cluesUl = document.getElementById("clues")
   clueArray.forEach(clue => {
     const clueLi = document.createElement("li")
@@ -263,18 +226,12 @@ const renderClues = (clueArray) => {
     cluesUl.append(clueLi)
   })
   const firstClueLi = document.getElementsByClassName("hint")[0]
-  console.log(firstClueLi)
   firstClueLi.style.display = "block"
-  console.log(firstClueLi)
 }
 
-// const renderButton = () => {
-//   const button = document.getElementById("clue-btn")
-//   button.innerHTML = `Show Next Hint`
-// }
+
 
 const revealClue = () => {
-
   const cluesLiArray = document.getElementsByClassName("hint")
 
   for (i = 0; i < cluesLiArray.length; i++){
@@ -284,9 +241,8 @@ const revealClue = () => {
   }
 }
 
+// send updated attempt, render victory screen
 const puzzleCompletion = () => {
-  // send updated attempt
-  // render victory screen
   stopTimer()
   const attemptId = parseInt(submitBtn.dataset.attemptId, 10)
   const stopwatch = document.getElementById('stopwatch').innerText
@@ -309,21 +265,14 @@ const puzzleCompletion = () => {
   .then(attempt => {
     togglePuzzleInterface()
     interfaceDiv.innerHTML = ""
-    console.log (attempt)
     renderSuccess(attempt)
   })
   
 }
 
 const renderSuccess = (attempt) => {
-
- 
-
-
-
   const div = document.createElement('div')
   div.className = 'my-4 text-center'
-
   if (attempt.puzzle.solution_image) {
     const image = document.createElement('img')
     image.setAttribute("src", attempt.puzzle.solution_image)
