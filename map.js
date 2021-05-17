@@ -7,14 +7,12 @@ let targetLong
 let radiusLimit
 
 // resset map zoom upon victory or giving up
-
 function initMap() {
     const myLatlng = { lat: 0, lng: 0 };
     const map = new google.maps.Map(document.getElementById("map"), {
       zoom: 1,
       center: myLatlng,
     });
-
 
     const input = document.getElementById("pac-input");
     const searchBox = new google.maps.places.SearchBox(input);
@@ -41,7 +39,6 @@ function initMap() {
       const bounds = new google.maps.LatLngBounds();
       places.forEach((place) => {
         if (!place.geometry || !place.geometry.location) {
-          console.log("Returned place contains no geometry");
           return;
         }
         const icon = {
@@ -94,21 +91,16 @@ function initMap() {
       
       currentLat = mapsMouseEvent.latLng.toJSON().lat
       currentLong = mapsMouseEvent.latLng.toJSON().lng
-      console.log(currentLat, currentLong)
-
     });
   }
   
   const verify = (latitude, longitude, guessLat, guessLong, radiusLimit) => {
-
     const r = Math.sqrt((guessLat-latitude)**2+(guessLong-longitude)**2)
     
     if (r <= radiusLimit){
-      console.log("YOU WIN")
       puzzleCompletion()
       // fetch attempt back to api with updated status (successful)
       } else {
-        console.log("try again")
         const p = document.getElementById('incorrect')
 
         p.style.display = "block"
@@ -118,15 +110,3 @@ function initMap() {
         }, 4000)
       }
   }
-
-  // const minLat = latitude - length
-  // const maxLat = latitude + length
-  
-  // const minLongitude = longitude - length
-  // const maxLong = longitude + length
-
-
-
-  // if (guessLat >= minLat && guessLat <= maxLat && guessLong >= minLongitude && guessLong <= maxLong){
-  //   return true
-  // }
