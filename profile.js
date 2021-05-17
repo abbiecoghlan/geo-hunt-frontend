@@ -1,8 +1,6 @@
 const displayProfile = () => {
     fetchData(userUrl + `/${userId}`)
-    .then(user => {
-      
-        // console.log(user)
+    .then(user => {      
         const username = document.createElement('h1')
         username.innerText = `Welcome, ${user.username}`
         username.className = 'text-center'
@@ -62,7 +60,6 @@ const displayProfile = () => {
 
         addButtonListener()
 
-
     })
 }
 
@@ -70,8 +67,6 @@ const addButtonListener = () => {
   const button = document.getElementById('reset-btn')
 
   button.addEventListener('click', event => {
-    event.preventDefault()
-
     const reqObj = {
       method: 'DELETE'
     }
@@ -82,6 +77,5 @@ const addButtonListener = () => {
       displayProfile()
       alert(message.message)
     })
-
   })
 }
