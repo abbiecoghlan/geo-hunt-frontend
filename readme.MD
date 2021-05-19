@@ -1,6 +1,11 @@
-GEO HUNT
+# GEO HUNT
 
 Welcome to GEO HUNT!
+
+<img width="1168" alt="Screen Shot 2021-05-18 at 8 28 20 PM" src="https://user-images.githubusercontent.com/66394682/118743381-deffd980-b817-11eb-94d3-30ad0a2837a6.png">
+
+<img width="1166" alt="Screen Shot 2021-05-18 at 8 29 34 PM" src="https://user-images.githubusercontent.com/66394682/118743396-e9ba6e80-b817-11eb-8c27-cf39704c6265.png">
+
 
 This project was created by three students attending Flatiron School's software engineering immersive as their module three project. 
 
