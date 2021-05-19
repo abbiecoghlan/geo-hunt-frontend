@@ -1,10 +1,11 @@
 # Geo Hunt 🔎
-
 Geo Hunt is an interactive, location-based geography trivia game. Users are given hints to guess a location and use the interactive map, provided by a Google Maps API, to guess and find the location. The application also keeps track of the users game stats through a dynamic leaderboard. 
+## ✨ [Watch Demo](https://www.youtube.com/watch?v=YsVwr-I-RNw)
 
 <img width="1168" alt="screengrab of geo hunt app showing a nav bar on top, map on left, and clues and submit button on right" src="https://user-images.githubusercontent.com/66394682/118743381-deffd980-b817-11eb-94d3-30ad0a2837a6.png">
 
 <img width="1166" alt="screengrab of geo hunt app showing a nav bar on top, 'you found it' text, and photo of gateway arch in st.louis" src="https://user-images.githubusercontent.com/66394682/118743396-e9ba6e80-b817-11eb-8c27-cf39704c6265.png">
+
 
 ## 🚀 Technology
 Single Page Web Application built with:
